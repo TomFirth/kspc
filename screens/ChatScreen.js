@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button, FlatList, Modal, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { checkLoggedInState, logout } from '../auth';
 
 const savedContacts = [
   { id: '1', name: 'Alice' },
@@ -16,6 +17,34 @@ const activeChats = [
 export default function ChatScreen() {
   const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    const handleAppStateChange = async (nextAppState) => {
+      if (appState.match(/inactive|background/) && nextAppState === 'active') {
+        // If app was inactive/backgrounded and now is active, check login state
+        const isLoggedIn = await checkLoggedInState();
+        if (!isLoggedIn) {
+          // If the user is not logged in, redirect to Home for PIN re-entry
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'Home' }],
+          });
+        }
+      } else if (nextAppState.match(/inactive|background/)) {
+        // When the app goes into the background, invalidate login state
+        await invalidateLoginState();
+      }
+
+      setAppState(nextAppState);
+    };
+
+    // Listen for app state changes
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+
+    return () => {
+      subscription.remove();  // Clean up event listener
+    };
+  }, [appState, navigation]);
 
   // Open the modal to display saved contacts
   const openModal = () => {

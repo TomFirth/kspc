@@ -36,6 +36,40 @@ export default function ShareScreen() {
     };
   }, [navigation]);
 
+  useEffect(() => {
+    const handleAppStateChange = async (nextAppState) => {
+      if (appState.match(/inactive|background/) && nextAppState === 'active') {
+        // If app was inactive/backgrounded and now is active, check login state
+        const isLoggedIn = await checkLoggedInState();
+        if (!isLoggedIn) {
+          // If the user is not logged in, redirect to Home for PIN re-entry
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'Home' }],
+          });
+        }
+      } else if (nextAppState.match(/inactive|background/)) {
+        // When the app goes into the background, invalidate login state
+        await invalidateLoginState();
+      }
+
+      setAppState(nextAppState);
+      generateRSAKeys();
+      activateNFC();
+      
+      return () => {
+        NfcManager.setEventListener(NfcTech.Ndef, null); // Clean up NFC events
+      };
+    };
+
+    // Listen for app state changes
+    const subscription = AppState.addEventListener('change', handleAppStateChange);
+
+    return () => {
+      subscription.remove();  // Clean up event listener
+    };
+  }, [appState, navigation]);
+
   // Generate RSA key pair
   const generateRSAKeys = async () => {
     try {
@@ -83,14 +117,6 @@ export default function ShareScreen() {
     // Update UI to reflect received data
     setReceivedData({ username: receivedUsername, publicKey: receivedPublicKey });
     Alert.alert('Received Contact', `Username: ${receivedUsername}`);
-  };
-
-  const handleLogout = async () => {
-    await logout();
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'Home' }],
-    });
   };
 
   return (

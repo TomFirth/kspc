@@ -3,17 +3,18 @@ import SecureStore from 'expo-secure-store';
 export const checkLoggedInState = async () => {
   try {
     const isLoggedIn = await SecureStore.getItemAsync('isLoggedIn');
-    return isLoggedIn === 'true';  // Returns true if logged in, false otherwise
+    return isLoggedIn === 'true';
   } catch (error) {
     console.error('Error checking login state:', error);
     return false;
   }
 };
 
-export const logout = async () => {
+// Clear login state (called when app moves to background or device is turned off)
+export const invalidateLoginState = async () => {
   try {
-    await SecureStore.deleteItemAsync('isLoggedIn');  // Clear logged-in state
+    await SecureStore.deleteItemAsync('isLoggedIn');  // Clear the stored login flag
   } catch (error) {
-    console.error('Error logging out:', error);
+    console.error('Error clearing login state:', error);
   }
 };
