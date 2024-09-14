@@ -2,7 +2,8 @@
 
 ## Run the App
 
-## iOS (on macOS): `npx react-native run-ios`
+## iOS (on macOS): 
+Run: `npx react-native run-ios`
 Alternatively, you can open the project in Xcode and run it from there by pressing the "Play" button.
 
 ### Android:
