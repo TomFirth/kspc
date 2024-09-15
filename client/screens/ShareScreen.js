@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Alert, Button } from 'react-native';
 import NfcManager, { NfcTech } from 'react-native-nfc-manager';
 import RSA from 'react-native-rsa-native';
-import { getUsername, saveReceivedContact } from '../storage/users';
+import { getUsername } from '../storage/users';
+import { saveReceivedContact } from '../storage/contacts';
 
 // Initialize NFC
 NfcManager.start();

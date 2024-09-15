@@ -30,22 +30,6 @@ export const createTable = () => {
   });
 };
 
-// Save the received contact (username and public key)
-export const saveReceivedContact = (username, publicKey) => {
-  db.transaction(tx => {
-    tx.executeSql(
-      'INSERT INTO contacts (username, publicKey) VALUES (?, ?)',
-      [username, publicKey],
-      (txObj, resultSet) => {
-        console.log('Contact saved successfully');
-      },
-      (txObj, error) => {
-        console.error('Error saving contact:', error);
-      }
-    );
-  });
-};
-
 // Save username
 export const saveUsername = (username) => {
   db.transaction((tx) => {
