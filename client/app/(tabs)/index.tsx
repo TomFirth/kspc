@@ -8,7 +8,7 @@ import { savePin, getPin } from '@/storage/secure';
 import { saveUsername, getUsername, createTable } from '@/storage/users';
 
 export default function HomeScreen() {
-  const [username, setUsername] = useState('');
+  /* const [username, setUsername] = useState('');
   const [pin, setPin] = useState(Array(6).fill(''));
   const [isUsernameSet, setIsUsernameSet] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -36,9 +36,9 @@ export default function HomeScreen() {
     } else {
       setErrorMessage('Incorrect PIN. Please try again.');
     }
-  };
+  }; */
 
-  const handleSave = async () => {
+  /* const handleSave = async () => {
     if (!username) {
       setErrorMessage('Username is required');
       return;
@@ -54,14 +54,14 @@ export default function HomeScreen() {
     savePin(pin.join(''));
 
     // Navigate to Chat after successful save
-  };
+  }; */
 
   return (
     <>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title"></ThemedText>
       </ThemedView>
-      {!isUsernameSet ? (
+      {/*!isUsernameSet ? (
         <ThemedView style={styles.stepContainer}>
           <ThemedText type="subtitle">Username</ThemedText>
           <ThemedText>
@@ -75,11 +75,11 @@ export default function HomeScreen() {
             />
           </ThemedText>
         </ThemedView>
-      ) : (<></>)}
+      ) : (<></>) */}
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">PIN</ThemedText>
         <ThemedText>
-          {pin.map((digit, index) => (
+          {/* pin.map((digit, index) => (
             <TextInput
               key={index}
               style={styles.pinInput}
@@ -92,14 +92,14 @@ export default function HomeScreen() {
               keyboardType="numeric"
               maxLength={1}
             />
-          ))}
+          )) */}
         </ThemedText>
       </ThemedView>
-      <Button
+      {/*<Button
         title={isUsernameSet ? 'Enter PIN' : 'Save'}
         onPress={isUsernameSet ? handlePinSubmit : handleSave}
         color="black"
-      />
+      />*/}
     </>
   );
 }

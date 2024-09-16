@@ -17,3 +17,14 @@ Add people to your contacts and share your public rsa key via nfc. Your contacts
 
 ## Development
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+
+## Design
+#### pin
+- Authentication for local app.
+- User public key is encrypted with pin.
+- Stored locally.
+
+#### public key
+- Only used by this app
+- encrypted with user's pin
+- not stored unencrypted anywhere.
