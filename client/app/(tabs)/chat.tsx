@@ -1,19 +1,16 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Image, Platform } from 'react-native';
+import { Image, StyleSheet, Platform } from 'react-native';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-export default function ShareScreen() {
+export default function ChatScreen() {
   return (
     <>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title"></ThemedText>
       </ThemedView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Share</ThemedText>
+        <ThemedText type="title">Messages</ThemedText>
       </ThemedView>
     </>
   );
