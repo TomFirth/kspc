@@ -20,11 +20,28 @@ You can start developing by editing the files inside the **app** directory. This
 
 ## Design
 #### pin
-- Authentication for local app.
-- User public key is encrypted with pin.
-- Stored locally.
+- Authentication for local app
+- User public key is encrypted with pin
+- Stored locally
 
 #### public key
 - Only used by this app
 - encrypted with user's pin
-- not stored unencrypted anywhere.
+- not stored unencrypted anywhere
+
+#### shared public key
+- encruypted by user's public key
+- not stored unencrypted anywhere
+
+
+## TODO
+[x] basic codebase and environment setup
+[ ] create initial form (username & pin)
+[ ] home form saves username (plain text & uuid) and pin (secure)
+[ ] basic auth for tab navigation and pages (prevent navigating to any page other than without pin)
+[ ] share public key via nfc (send username/uuid/public key && receive same)
+[ ] encryption
+[ ] create contacts list
+[ ] create messaging server (send/receive)
+[ ] display messages and sort by latest
+[ ] display individual message thread
