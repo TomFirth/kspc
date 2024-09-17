@@ -8,7 +8,9 @@ import { savePin, getPin } from '@/storage/secure';
 import { saveUsername, getUsername, createTable } from '@/storage/users';
 
 export default function HomeScreen() {
-  /* const [username, setUsername] = useState(''); */
+  const [username, setUsername] = useState(false); 
+  const [pinPut, setPinPut] = useState([]);
+  const [authenticated, setAuthenticated] = useState(false);
   const pin = Array(6).fill('');
   const isUsernameSet = false;
   /* const [errorMessage, setErrorMessage] = useState('');
@@ -44,10 +46,12 @@ export default function HomeScreen() {
       return;
     }
 
-    if (pin.join('').length !== 6) {
+    if (pinPut.join('').length !== 6) {
       setErrorMessage('PIN must be 6 digits');
       return;
     }
+
+    setAuthenticated(true)
 
     // saveUuid
     // saveUsername(username);
@@ -64,6 +68,7 @@ export default function HomeScreen() {
           placeholder="Username"
           placeholderTextColor="white"
           autoFocus={true}
+          onChangeText={(value) => setUsername(value)}
         />
       ) : (<></>) }
       <View style={styles.pinContainer}>
@@ -72,10 +77,12 @@ export default function HomeScreen() {
             key={index}
             style={styles.pinInput}
             onChangeText={(value) => {
-              const newPin = [...pin];
-              newPin[index] = value;
+              // const newPin = [...pin];
+              // newPin[index] = value;
+              setPinPut([...pinPut, ...[value]])
             }}
             keyboardType="numeric"
+            secureTextEntry={true}
             maxLength={1}
           />
         )) }
@@ -86,6 +93,13 @@ export default function HomeScreen() {
           onPress={isUsernameSet ? handlePinSubmit : handleSave}
         >Submit</Text>
       </TouchableOpacity>
+
+
+      {authenticated &&
+        <Text style={styles.authToast}>
+          Yeah, Authenticated ok...
+        </Text>
+      }
     </View>
   );
 }
@@ -125,6 +139,7 @@ const styles = StyleSheet.create({
     height: 45,
     borderColor: 'gray',
     borderWidth: 1,
+    textAlign: 'center',
   },
   button: {
     backgroundColor: 'black',
@@ -140,4 +155,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
+  authToast: {
+    marginTop: 50,
+    backgroundColor: '#9FC131',
+    color: '#042940',
+    paddingHorizontal: 40,
+    paddingVertical: 20,
+    borderRadius: 20,
+    fontSize: 18,
+    overflow: 'hidden',
+  }
 });
