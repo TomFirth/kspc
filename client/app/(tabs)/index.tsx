@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { Image, Platform, View, TextInput, Button, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { v4 as uuidv4 } from 'uuid';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 import { savePin, getPin } from '@/storage/secure';
-import { saveUsername, getUsername, createTable } from '@/storage/users';
+import { saveUser, getUser, createTable } from '@/storage/users';
 
 export default function HomeScreen() {
-  /* const [username, setUsername] = useState(''); */
-  const pin = Array(6).fill('');
-  const isUsernameSet = false;
-  /* const [errorMessage, setErrorMessage] = useState('');
+  const [username, setUsername] = useState('');
+  const [pin, setPin] = useState(Array(6).fill(''));
+  const [isUsernameSet, setIsUsernameSet] = useState(false);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const checkUserExists = async () => {
-      createTable(); // Ensure the table is created
-      const storedUsername = await getUsername();
-      if (storedUsername) {
-        setUsername(storedUsername);
+      createTable();
+      const { username, uuid } = await getUser();
+      if (username) {
+        setUser({ username, uuid });
         setIsUsernameSet(true);
       }
     };
     checkUserExists();
-  }, []);
+  }, []); */
 
-  const handlePinSubmit = async () => {
+  /* const handlePinSubmit = async () => {
     const storedPin = await getPin();
     const enteredPin = pin.join('');
 
@@ -49,8 +49,7 @@ export default function HomeScreen() {
       return;
     }
 
-    // saveUuid
-    // saveUsername(username);
+    // saveUser(uuidv4(), username);
     // savePin(pin.join(''));
 
     // Navigate to Chat after successful save
@@ -58,22 +57,24 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.main}>
-      {!isUsernameSet ? (
+      {!isUsernameSet && (
         <TextInput
           style={styles.input}
           placeholder="Username"
           placeholderTextColor="white"
           autoFocus={true}
         />
-      ) : (<></>) }
+      )}
       <View style={styles.pinContainer}>
         {pin.map((digit, index) => (
           <TextInput
             key={index}
             style={styles.pinInput}
+            value={digit}
             onChangeText={(value) => {
               const newPin = [...pin];
               newPin[index] = value;
+              setPin(newPin);
             }}
             keyboardType="numeric"
             maxLength={1}

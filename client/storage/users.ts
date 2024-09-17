@@ -1,4 +1,3 @@
-// storage/sqlite.js
 import SQLite from 'react-native-sqlite-storage';
 
 // Open or create a database
@@ -31,7 +30,7 @@ export const createTable = () => {
 };
 
 // Save username
-export const saveUsername = (username: string) => {
+export const saveUser = (uuid: string, username: string) => {
   db.transaction((tx) => {
     tx.executeSql(
       'INSERT INTO users (username) VALUES (?);',
@@ -43,28 +42,24 @@ export const saveUsername = (username: string) => {
 };
 
 // Get username
-export const getUsername = () => {
-  return new Promise((resolve, reject) => {
-    db.transaction((tx) => {
-      tx.executeSql(
-        'SELECT username FROM users ORDER BY id DESC LIMIT 1;',
-        [],
-        (tx, results) => {
-          if (results.rows.length > 0) {
-            const username = results.rows.item(0).username;
-            console.log('Retrieved username:', username);
-            resolve(username);
-          } else {
-            console.log('No username found');
-            resolve(null);
-          }
-        },
-        (error) => {
-          console.error('Error retrieving username:', error);
-          reject(error);
+export const getUser = () => {
+  db.transaction(tx => {
+    tx.executeSql(
+      'SELECT username, uuid FROM users LIMIT 1',
+      [],
+      (tx, results) => {
+        if (results.rows.length > 0) {
+          const row = results.rows.item(0);
+          return {
+            username: row.username,
+            uuid: row.uuid,
+          };
         }
-      );
-    });
+      },
+      (error) => {
+        throw new Error(error);
+      }
+    );
   });
 };
 
