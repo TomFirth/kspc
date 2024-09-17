@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Image, Platform, View, TextInput, Button, StyleSheet, Text } from 'react-native';
+import { Image, Platform, View, TextInput, Button, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -38,7 +38,7 @@ export default function HomeScreen() {
     }
   }; */
 
-  /* const handleSave = async () => {
+  const handleSave = async () => {
     if (!username) {
       setErrorMessage('Username is required');
       return;
@@ -50,17 +50,14 @@ export default function HomeScreen() {
     }
 
     // saveUuid
-    saveUsername(username);
-    savePin(pin.join(''));
+    // saveUsername(username);
+    // savePin(pin.join(''));
 
     // Navigate to Chat after successful save
-  }; */
+  };
 
   return (
-    <>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title"></ThemedText>
-      </ThemedView>
+    <View style={styles.main}>
       {!isUsernameSet ? (
         <TextInput
           style={styles.input}
@@ -83,52 +80,64 @@ export default function HomeScreen() {
           />
         )) }
       </View>
-      {/*<Button
-        title={isUsernameSet ? 'Enter PIN' : 'Save'}
-        onPress={isUsernameSet ? handlePinSubmit : handleSave}
-        color="black"
-      />*/}
-    </>
+      <TouchableOpacity style={styles.button}>
+        <Text
+          style={styles.buttonText}
+          onPress={isUsernameSet ? handlePinSubmit : handleSave}
+        >Submit</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  main: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
   },
   input: {
-    backgroundColor: 'black',   // Black background
-    color: 'white',             // White text color
-    borderRadius: 10,           // Rounded edges
-    paddingHorizontal: 15,      // Horizontal padding inside the input
-    paddingVertical: 10,        // Vertical padding inside the input
-    fontSize: 16,               // Font size
-    width: '80%',               // Set container to 80% of screen width
-    alignSelf: 'center',              // Center the container horizontally
+    backgroundColor: 'black',
+    color: 'white',
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    fontSize: 16,
+    width: '80%',
+    alignSelf: 'center',
+    marginVertical: 10,
   },
   pinContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',  // Spacing between inputs
+    justifyContent: 'space-between',
     paddingHorizontal: 20,
     flexDirection: 'row',
-    width: '80%',                     // Set container to 80% of screen width
-    alignSelf: 'center',              // Center the container horizontally
+    width: '80%',
+    alignSelf: 'center',
   },
   pinInput: {
-    backgroundColor: 'black',         // Black background
-    color: 'white',                   // White text color
-    borderRadius: 10,                 // Rounded edges
-    padding: 10,                      // Padding inside input
-    fontSize: 18,                     // Font size for the PIN digits
-    width: 45,                        // Width for each PIN input
-    height: 45,                       // Height for each PIN input
-    borderColor: 'gray',              // Optional: Border color to make the input stand out
+    backgroundColor: 'black',
+    color: 'white',
+    borderRadius: 10,
+    padding: 10,
+    fontSize: 18,
+    width: 45,
+    height: 45,
+    borderColor: 'gray',
     borderWidth: 1,
+  },
+  button: {
+    backgroundColor: 'black',
+    borderRadius: 10,
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    width: '50%',
+    alignSelf: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
