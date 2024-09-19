@@ -34,8 +34,15 @@ export const saveUser = (uuid: string, username: string) => {
   db.transaction((tx) => {
     tx.executeSql(
       'INSERT INTO users (uuid, username) VALUES (?, ?);',
-      [username],
-      () => console.log('Username saved successfully'),
+      [uuid, username],
+      (tx, results) => {
+        if (results.rowsAffected > 0) {
+          Alert.alert('Success', `User saved with UUID: ${generatedUuid}`);
+          setUsername(''); // Clear input after save
+        } else {
+          Alert.alert('Error', 'Failed to save user');
+        }
+      },
       (error) => console.error('Error saving username', error)
     );
   });
@@ -51,8 +58,8 @@ export const getUser = () => {
         if (results.rows.length > 0) {
           const row = results.rows.item(0);
           return {
-            username: row.username,
             uuid: row.uuid,
+            username: row.username
           };
         }
       },

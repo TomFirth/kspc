@@ -10,25 +10,21 @@ import { ThemedView } from '@/components/ThemedView';
 import { savePin, getPin } from '@/storage/secure';
 import { saveUser, getUser, createTable } from '@/storage/users';
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [username, setUsername] = useState('');
 //   const [pin, setPin] = useState(Array(6).fill(''));
-  const [isUsernameSet, setIsUsernameSet] = useState(false);
+  const [isAuthenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    /* createUser = async () => {
+    const checkUserExists = async () => {
       createTable();
-      saveUser(uuidv4(), "user");
-    } */
-//     const checkUserExists = async () => {
-//       createTable();
-//       const { username, uuid } = await getUser();
-//       if (username) {
-//         setUser({ username, uuid });
-//         setIsUsernameSet(true);
-//       }
-//     };
-//     checkUserExists();
+      const { uuid, username } = await getUser();
+      if (uuid && username) {
+        setUsername({ uuid, username });
+        setAuthenticated(true);
+      }
+    };
+    checkUserExists();
   }, []);
 
   /* const handlePinSubmit = async () => {
@@ -49,16 +45,18 @@ export default function HomeScreen() {
       console.error('Username is required');
       return;
     }
+    createTable();
 
 //     if (pin.join('').length !== 6) {
 //       setErrorMessage('PIN must be 6 digits');
 //       return;
 //     }
-    // setUsername(username)
-    // saveUser(uuidv4(), username);
+    const generatedUuid = uuidv4();
+    saveUser(generatedUuid, username);
+    setUsername({ uuid, username });
     // savePin(pin.join(''));
 
-    // Navigate to Chat after successful save
+    navigation.navigate('Chat');
   };
 
   return (
@@ -66,6 +64,8 @@ export default function HomeScreen() {
       {/*{!isUsernameSet && (*/}
         <TextInput
           style={styles.input}
+          value={username}
+          onChangeText={setUsername}
           placeholder="Username"
           placeholderTextColor="white"
           autoFocus={true}
