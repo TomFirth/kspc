@@ -14,7 +14,7 @@ const db = SQLite.openDatabase(
 export const createTable = () => {
   db.transaction((tx) => {
     tx.executeSql(
-      'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT);',
+      'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, uuid TEXT, username TEXT);',
       [],
       () => console.log('Table created successfully'),
       (error) => console.error('Error creating table', error)
@@ -23,7 +23,7 @@ export const createTable = () => {
 
   db.transaction(tx => {
     tx.executeSql(
-      'CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, publicKey TEXT)',
+      'CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, uuid TEXT, username TEXT, publicKey TEXT)',
       []
     );
   });
@@ -33,7 +33,7 @@ export const createTable = () => {
 export const saveUser = (uuid: string, username: string) => {
   db.transaction((tx) => {
     tx.executeSql(
-      'INSERT INTO users (username) VALUES (?);',
+      'INSERT INTO users (uuid, username) VALUES (?, ?);',
       [username],
       () => console.log('Username saved successfully'),
       (error) => console.error('Error saving username', error)
@@ -45,7 +45,7 @@ export const saveUser = (uuid: string, username: string) => {
 export const getUser = () => {
   db.transaction(tx => {
     tx.executeSql(
-      'SELECT username, uuid FROM users LIMIT 1',
+      'SELECT uuid, username FROM users LIMIT 1',
       [],
       (tx, results) => {
         if (results.rows.length > 0) {
