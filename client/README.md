@@ -36,7 +36,7 @@ You can start developing by editing the files inside the **app** directory. This
 
 ## TODO
 [x] basic codebase and environment setup
-[x] create initial form (username & pin)
+[ ] create initial form (username & pin)
 [ ] home form saves username (plain text & uuid) and pin (secure)
 [ ] basic auth for tab navigation and pages (prevent navigating to any page other than without pin)
 [ ] share public key via nfc (send username/uuid/public key && receive same)

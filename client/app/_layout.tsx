@@ -1,37 +1,34 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { Stack } from "expo-router";
+import { RouteProp } from '@react-navigation/native';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+// Define the param type for the message route
+type MessageRouteParams = {
+  'messages/message/[uuid]': { uuid: string };
+};
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
+const RootLayout = ({ route }: { route: RouteProp<MessageRouteParams, 'messages/message/[uuid]'> }) => {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+    <Stack>
+      <Stack.Screen name="index" options={{
+        headerTitle: "welcome"
+      }} />
+      <Stack.Screen name="messages/index" options={{
+        headerTitle: "Messages"
+      }} />
+      <Stack.Screen name="messages/contacts" options={{
+        headerTitle: "Contacts"
+      }} />
+      <Stack.Screen name="messages/message/[uuid]" options={{
+        headerTitle: `User: ${route?.params?.uuid}`
+      }} />
+      <Stack.Screen name="share/index" options={{
+        headerTitle: "Add Contact",
+        headerStyle: {
+          backgroundColor: "red"
+        }
+      }} />
+    </Stack>
   );
 }
+
+export default RootLayout;
