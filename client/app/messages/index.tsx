@@ -7,6 +7,10 @@ const MessagesScreen = () => {
   return (
     <View>
       <Text>Messages Page</Text>
+      <Pressable style={styles.button} onPress={() => router.push("messages/contacts")}>
+        <Text
+          style={styles.buttonText}>View Contacts</Text>
+      </Pressable>
       <Pressable style={styles.button} onPress={() => router.push("share")}>
         <Text
           style={styles.buttonText}>Add Contact</Text>
