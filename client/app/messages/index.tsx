@@ -6,6 +6,7 @@ import { styles } from '@/styles/styles';
 const MessagesScreen = () => {
   return (
     <View>
+      <Text>Messages Page</Text>
       <Pressable style={styles.button} onPress={() => router.push("share")}>
         <Text
           style={styles.buttonText}>Add Contact</Text>

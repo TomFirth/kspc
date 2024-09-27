@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-
 export const styles = StyleSheet.create({
   main: {
     flex: 1,
@@ -21,7 +20,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    flexDirection: 'row',
     width: '80%',
     alignSelf: 'center',
   },
