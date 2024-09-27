@@ -1,6 +1,6 @@
 import * as SecureStore from 'expo-secure-store';
 // Save PIN securely
-export const savePin = async (pin) => {
+export const savePin = async (pin: string) => {
   try {
     await SecureStore.setItemAsync('userPin', pin);
     console.log('PIN saved successfully');
