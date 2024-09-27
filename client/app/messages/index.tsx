@@ -1,12 +1,15 @@
 import { Pressable, Text, View } from "react-native";
 import { router } from "expo-router";
 
+import { styles } from '@/styles/styles';
+
 const MessagesScreen = () => {
   return (
     <View>
       <Text>Messages Page</Text>
-      <Pressable onPress={() => router.push("/share")}>
-        <Text>Add Contact</Text>
+      <Pressable style={styles.button} onPress={() => router.push("share")}>
+        <Text
+          style={styles.buttonText}>Add Contact</Text>
       </Pressable>
       <Pressable onPress={() => router.push({
         pathname: "/messages/message/[uuid]",

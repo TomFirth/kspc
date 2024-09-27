@@ -1,6 +1,8 @@
 import { Text, View } from "react-native";
 import { Link } from "expo-router";
 
+import { styles } from '@/styles/styles';
+
 const ContactsScreen = () => {
   return (
     <View>

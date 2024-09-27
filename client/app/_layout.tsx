@@ -10,7 +10,7 @@ const RootLayout = ({ route }: { route: RouteProp<MessageRouteParams, 'messages/
   return (
     <Stack>
       <Stack.Screen name="index" options={{
-        headerTitle: "welcome"
+        headerTitle: "Welcome"
       }} />
       <Stack.Screen name="messages/index" options={{
         headerTitle: "Messages"
