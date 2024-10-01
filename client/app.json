@@ -16,6 +16,17 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.massivekent.kspchat",
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "USE_BIOMETRIC",
+        "FOREGROUND_SERVICE",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "VIBRATE"
+      ],
+      "icon": "./assets/adaptive-icon.png",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
