@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { Pressable, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { router } from "expo-router";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from 'uuid';
 
 import { styles } from '@/styles/styles';
 import { createUserTable, getUser, saveUser } from '@/db/user';
 
 const HomeScreen = () => {
   const [username, setUsername] = useState('');
+  const [tempUsername, setTempUsername] = useState('');
   const [uuid, setUuid] = useState('');
   const [pin, setPin] = useState(Array(6).fill(''));
 
   useEffect(async () => {
     createUserTable();
-    const user = await getUser()
+    const user = await getUser();
     setUsername(user.username);
     setUuid(user.uuid);
   }, []);
 
   const handleSave = async () => {
-    if (username.trim()) {
+    // check pin length
+    if (tempUsername.trim()) {
       try {
         const uuid = uuidv4();
-        await saveUser(uuid, username);
-        setUsername(username);
-        setUuid(uuid);
+        await saveUser(uuid, tempUsername);
+//         setUsername(tempUsername);
+//         setUuid(uuid);
       } catch (error) {
         console.error('Error saving user', error);
       }
@@ -40,7 +44,9 @@ const HomeScreen = () => {
           placeholder="Username"
           placeholderTextColor="white"
           autoFocus={true}
-          value={username}
+          value={tempUsername}
+          onChangeText={(text) => setTempUsername(text)}
+          keyboardType="numeric"
         />
 
         <TouchableOpacity style={styles.button} onPress={handleSave}>
