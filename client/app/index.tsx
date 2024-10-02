@@ -5,7 +5,7 @@ import "react-native-get-random-values";
 import { v4 as uuidv4 } from 'uuid';
 
 import { styles } from '@/styles/styles';
-import { createUserTable, getUser, saveUser } from '@/db/user';
+import { createUserTable, getUser, saveUser, deleteDB } from '@/db/user';
 
 const HomeScreen = () => {
   const [username, setUsername] = useState('');
@@ -37,6 +37,13 @@ const HomeScreen = () => {
       console.warn('Username cannot be empty');
     }
   };
+
+  const deleteUser = async () => {
+    if (username) {
+      await deleteDB();
+      router.push("./", { relativeToDirectory: true })
+    }
+  }
 
   if (!username) {
     return (
@@ -88,6 +95,10 @@ const HomeScreen = () => {
         </Pressable>
 
         <Text>Logged in: {username ? username : "None"}</Text>
+
+        <TouchableOpacity style={styles.button} onPress={deleteUser}>
+          <Text style={styles.buttonText}>Delete User</Text>
+        </TouchableOpacity>
       </View>
     );
   }

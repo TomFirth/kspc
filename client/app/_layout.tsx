@@ -1,7 +1,6 @@
 import { Stack } from "expo-router";
 import { RouteProp } from '@react-navigation/native';
 
-// Define the param type for the message route
 type MessageRouteParams = {
   'messages/message/[uuid]': { uuid: string };
 };
