@@ -13,12 +13,14 @@ const HomeScreen = () => {
   const [uuid, setUuid] = useState('');
   const [pin, setPin] = useState(Array(6).fill(''));
 
-  useEffect(async () => {
-    createUserTable();
-    const user = await getUser();
-    setUsername(user.username);
-    setUuid(user.uuid);
-  }, []);
+  useEffect(() => {
+    (async () => {
+      createUserTable();
+      const user = await getUser();
+      setUsername(user.username);
+      setUuid(user.uuid);
+    })();
+  }, [])
 
   const handleSave = async () => {
     // check pin length
@@ -26,8 +28,8 @@ const HomeScreen = () => {
       try {
         const uuid = uuidv4();
         await saveUser(uuid, tempUsername);
-//         setUsername(tempUsername);
-//         setUuid(uuid);
+        setUsername(tempUsername);
+        setUuid(uuid);
       } catch (error) {
         console.error('Error saving user', error);
       }
