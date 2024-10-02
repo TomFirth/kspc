@@ -1,18 +1,20 @@
+import { useState } from "react";
 import { Text, View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 
 import { styles } from '@/styles/styles';
 
-// display unencrypted message thread
+// display editable username
+// save
 
-const ThreadScreen = () => {
+const ShareScreen = () => {
   const { uuid } = useLocalSearchParams();
 
   return (
     <View style={styles.main}>
-      <Text style={styles.text}>Sending message to UUID: {uuid}</Text>
+      <Text style={styles.text}>Editing UUID: {uuid}</Text>
     </View>
   )
 }
 
-export default ThreadScreen;
+export default ShareScreen;

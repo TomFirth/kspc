@@ -20,9 +20,9 @@ You can start developing by editing the files inside the **app** directory. This
 
 ## Design
 #### pin
-- Authentication for local app
-- User public key is encrypted with pin
-- Stored locally
+- Authentication for local app (once account has been started - username given and uuid created)
+- User's public key is encrypted with pin, securely stored locally `expo-secure-store`
+- Create contacts with nfc. Use public key to encrypted shared public key. This is then stored locally.
 
 #### public key
 - Only used by this app
@@ -30,18 +30,31 @@ You can start developing by editing the files inside the **app** directory. This
 - not stored unencrypted anywhere
 
 #### shared public key
-- encruypted by user's public key
+- encrypted by user's public key
 - not stored unencrypted anywhere
 
+#### message format
+```
+{
+  createdAt: 1301090400,
+  to: uuid,
+  from: uuid,
+  message: <encrypted data>
+}
+```
 
 ## TODO
 [x] basic codebase and environment setup
-[ ] create initial form (username & pin)
-[ ] home form saves username (plain text & uuid) and pin (secure)
-[ ] basic auth for tab navigation and pages (prevent navigating to any page other than without pin)
+[x] create initial form (username & pin)
+[x] create initial form (pin)
+[x] home form saves username (plain text & uuid)
+[ ] home form saves pin (secure)
+[ ] basic auth for navigation (prevent navigating to any page other than without pin)
+[ ] create rsa
+[ ] encrypt rsa with user's pin and store securely
 [ ] share public key via nfc (send username/uuid/public key && receive same)
-[ ] encryption
 [ ] create contacts list
 [ ] create messaging server (send/receive)
 [ ] display messages and sort by latest
 [ ] display individual message thread
+[ ] app settings (username, theme)

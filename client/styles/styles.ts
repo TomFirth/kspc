@@ -47,5 +47,54 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     textAlign: 'center',
+  },
+  pressable: {
+    width: '90%',
+    padding: 15,
+    backgroundColor: '#25D366',
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
+  },
+  pressableText: {
+    fontSize: 18,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    width: 300,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  modalText: {
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  modalButton: {
+    width: '100%',
+    padding: 15,
+    backgroundColor: '#25D366',
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
+  },
+  modalButtonText: {
+    fontSize: 18,
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: 'bold',
   }
 });
