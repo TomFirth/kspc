@@ -54,17 +54,17 @@ You can start developing by editing the files inside the **app** directory. This
 ```
 
 ## TODO
-[x] basic codebase and environment setup
-[x] create initial form (username & pin)
-[x] create initial form (pin)
-[x] home form saves username (plain text & uuid)
-[ ] home form saves pin (secure)
-[ ] basic auth for navigation (prevent navigating to any page other than without pin)
-[ ] create rsa
-[ ] encrypt rsa with user's pin and store securely
-[ ] share public key via nfc (send username/uuid/public key && receive same)
-[ ] create contacts list
-[ ] create messaging server (send/receive)
-[ ] display messages and sort by latest
-[ ] display individual message thread
-[ ] app settings (username, theme)
+*[x] basic codebase and environment setup
+*[x] create initial form (username & pin)
+*[x] create initial form (pin)
+*[x] home form saves username (plain text & uuid)
+*[ ] home form saves pin (secure)
+*[ ] basic auth for navigation (prevent navigating to any page other than without pin)
+*[ ] create rsa
+*[ ] encrypt rsa with user's pin and store securely
+*[ ] share public key via nfc (send username/uuid/public key && receive same)
+*[ ] create contacts list
+*[ ] create messaging server (send/receive)
+*[ ] display messages and sort by latest
+*[ ] display individual message thread
+*[ ] app settings (username, theme)
