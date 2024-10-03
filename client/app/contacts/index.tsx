@@ -59,7 +59,7 @@ const ContactsScreen = () => {
 
       <Pressable style={styles.floatingButton} onPress={() => router.push("share")}>
         <Image
-          source={require('@/assets/user.png')} // Make sure the image path is correct
+          source={require('@/assets/qr-code.png')} // Make sure the image path is correct
           style={styles.floatingButtonImage}
         />
       </Pressable>

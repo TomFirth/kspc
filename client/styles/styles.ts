@@ -111,17 +111,17 @@ export const styles = StyleSheet.create({
   },
   floatingButton: {
     position: 'absolute',
-    bottom: 30,  // Positioning from the bottom
-    right: 30,   // Positioning from the right
-    width: 60,   // Button size
+    bottom: 30,
+    right: 30,
+    width: 60,
     height: 60,
-    backgroundColor: '#25D366',  // WhatsApp green color
-    borderRadius: 30,  // Half of width and height for circular shape
+    backgroundColor: '#25D366',
+    borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 5,  // Add shadow on Android
+    elevation: 5,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },  // Add shadow on iOS
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 3,
   },
@@ -131,7 +131,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   floatingButtonImage: {
-    width: 30,  // Adjust size to fit inside the button
+    width: 30,
     height: 30,
   },
   deleteButton: {
@@ -144,9 +144,9 @@ export const styles = StyleSheet.create({
     bottom: 0
   },
   image_mobile: {
-    width: 200,  // Define image width
-    height: 200, // Define image height
-    resizeMode: 'contain', // Ensures the image fits within the dimensions
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
   },
   container: {
     flex: 1,

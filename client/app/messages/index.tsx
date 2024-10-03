@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, View, Image } from "react-native";
 import { router, useRouter } from "expo-router";
 
 import { styles } from '@/styles/styles';
@@ -52,7 +52,10 @@ const MessagesScreen = () => {
       ))}
 
       <Pressable style={styles.floatingButton} onPress={newContact}>
-        <Text style={styles.floatingButtonText}>+</Text>
+        <Image
+          source={require('@/assets/user.png')} // Make sure the image path is correct
+          style={styles.floatingButtonImage}
+        />
       </Pressable>
     </View>
   )
