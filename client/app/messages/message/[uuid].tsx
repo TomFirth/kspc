@@ -42,6 +42,7 @@ function generateRandomMessages(numMessages) {
 }
 
 // display unencrypted message thread
+// check last message read
 
 const ThreadScreen = () => {
   messageData = generateRandomMessages(20);

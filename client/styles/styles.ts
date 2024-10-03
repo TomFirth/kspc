@@ -169,11 +169,11 @@ export const styles = StyleSheet.create({
   },
   userMessage: {
     alignSelf: 'flex-end',
-    backgroundColor: '#25D366', // Light green for user messages (WhatsApp style)
+    backgroundColor: '#25D366',
   },
   receivedMessage: {
     alignSelf: 'flex-start',
-    backgroundColor: '#FFFFFF', // White for received messages
+    backgroundColor: '#FFFFFF',
   },
   messageText: {
     fontSize: 16,
@@ -181,7 +181,7 @@ export const styles = StyleSheet.create({
   timestampText: {
     fontSize: 10,
     marginTop: 5,
-    color: '#888',
+    color: '#000',
     textAlign: 'right',
   },
   inputContainer: {
