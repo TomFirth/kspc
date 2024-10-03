@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    height: '100%',
   },
   input: {
     backgroundColor: 'black',
@@ -52,7 +53,6 @@ export const styles = StyleSheet.create({
     width: '90%',
     padding: 15,
     backgroundColor: '#25D366',
-    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 10,
@@ -96,5 +96,86 @@ export const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  text: {
+    fontSize: 20,
+  },
+  floatingButton: {
+    position: 'absolute',
+    bottom: 30,  // Positioning from the bottom
+    right: 30,   // Positioning from the right
+    width: 60,   // Button size
+    height: 60,
+    backgroundColor: '#25D366',  // WhatsApp green color
+    borderRadius: 30,  // Half of width and height for circular shape
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5,  // Add shadow on Android
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },  // Add shadow on iOS
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+  },
+  floatingButtonText: {
+    color: 'white',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  deleteButton: {
+    width: '100%',
+    padding: 15,
+    backgroundColor: '#FF0000',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
+  },
+  image_mobile: {
+    width: 200,  // Define image width
+    height: 200, // Define image height
+    resizeMode: 'contain', // Ensures the image fits within the dimensions
+  },
+  messageList: {
+    flex: 1,
+    paddingHorizontal: 10,
+  },
+  messageContainer: {
+    maxWidth: '100%',
+    padding: 10,
+    marginVertical: 5,
+    borderRadius: 10,
+  },
+  userMessage: {
+    alignSelf: 'flex-end',
+    backgroundColor: '#DCF8C6', // Light green for user messages (WhatsApp style)
+  },
+  receivedMessage: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#FFFFFF', // White for received messages
+  },
+  messageText: {
+    fontSize: 16,
+  },
+  timestampText: {
+    fontSize: 10,
+    marginTop: 5,
+    color: '#888',
+    textAlign: 'right',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    padding: 10,
+    backgroundColor: '#fff',
+    borderTopWidth: 1,
+    borderColor: '#ddd',
+  },
+  textInput: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 20,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    backgroundColor: '#f9f9f9',
+    fontSize: 16,
   }
 });

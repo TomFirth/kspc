@@ -43,6 +43,16 @@ You can start developing by editing the files inside the **app** directory. This
 }
 ```
 
+#### share format
+```
+{
+  createdAt: 1301090400
+  uuid: uuid
+  username: username
+  key: rsa public key
+}
+```
+
 ## TODO
 [x] basic codebase and environment setup
 [x] create initial form (username & pin)

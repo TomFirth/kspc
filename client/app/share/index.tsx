@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 
 import { styles } from '@/styles/styles';
 
@@ -17,6 +17,14 @@ import { styles } from '@/styles/styles';
 const ShareScreen = () => {
   return (
     <View>
+      <Image
+        source={require('@/assets/mobile.png')} // Path to the image
+        style={styles.image_mobile} // Define dimensions for the image
+      />
+      <Image
+        source={require('@/assets/qr-code.png')} // Path to the image
+        style={styles.image_mobile} // Define dimensions for the image
+      />
     </View>
   )
 }
