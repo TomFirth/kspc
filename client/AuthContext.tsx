@@ -1,15 +1,12 @@
 import React, { createContext, useState, useContext } from 'react';
 
-// Define the shape of your authentication context
 type AuthContextType = {
   isAuthenticated: boolean;
   setIsAuthenticated: (auth: boolean) => void;
 };
 
-// Create the context with default values
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// AuthProvider component to wrap the app
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -20,7 +17,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   );
 };
 
-// Custom hook for easy access to the context
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (context === undefined) {

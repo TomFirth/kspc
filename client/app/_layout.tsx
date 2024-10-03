@@ -12,7 +12,7 @@ const RootLayout = ({ route }: { route: RouteProp<MessageRouteParams, 'messages/
     <AuthProvider>
       <Stack>
         <Stack.Screen name="index" options={{
-          headerTitle: "Welcome"
+          headerTitle: "KSPChat"
         }} />
         <Stack.Screen name="messages/index" options={{
           headerTitle: "Messages"
@@ -24,7 +24,7 @@ const RootLayout = ({ route }: { route: RouteProp<MessageRouteParams, 'messages/
           headerTitle: "Edit Contact"
         }} />
         <Stack.Screen name="messages/message/[uuid]" options={{
-          headerTitle: `User: ${route?.params?.uuid}`
+          headerTitle: "User: "
         }} />
         <Stack.Screen name="share/index" options={{
           headerTitle: "Share",

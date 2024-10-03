@@ -58,7 +58,7 @@ You can start developing by editing the files inside the **app** directory. This
 [x] create initial form (username & pin)
 [x] create initial form (pin)
 [x] home form saves username (plain text & uuid)
-[ ] home form saves pin (secure)
+[x] home form saves pin (secure)
 [ ] basic auth for navigation (prevent navigating to any page other than without pin)
 [ ] create rsa
 [ ] encrypt rsa with user's pin and store securely

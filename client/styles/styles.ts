@@ -140,7 +140,8 @@ export const styles = StyleSheet.create({
     backgroundColor: '#FF0000',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 10,
+    position: 'absolute',
+    bottom: 0
   },
   image_mobile: {
     width: 200,  // Define image width
