@@ -1,10 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   main: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100%',
+    margin: 0,
+    padding: 0,
+    height: Dimensions.get("window").height
   },
   input: {
     backgroundColor: 'black',
@@ -50,12 +52,11 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   pressable: {
-    width: '90%',
+    width: '100%',
     padding: 15,
     backgroundColor: '#25D366',
-    alignItems: 'center',
+    alignItems: 'left',
     justifyContent: 'center',
-    marginVertical: 10,
   },
   pressableText: {
     fontSize: 18,
@@ -138,9 +139,18 @@ export const styles = StyleSheet.create({
     height: 200, // Define image height
     resizeMode: 'contain', // Ensures the image fits within the dimensions
   },
+  container: {
+    flex: 1,
+    margin: 0,
+    padding: 0,
+    width: '100%'
+  },
   messageList: {
     flex: 1,
     paddingHorizontal: 10,
+    margin: 0,
+    maxWidth: '100%',
+    width: '100%',
   },
   messageContainer: {
     maxWidth: '100%',
@@ -150,7 +160,7 @@ export const styles = StyleSheet.create({
   },
   userMessage: {
     alignSelf: 'flex-end',
-    backgroundColor: '#DCF8C6', // Light green for user messages (WhatsApp style)
+    backgroundColor: '#25D366', // Light green for user messages (WhatsApp style)
   },
   receivedMessage: {
     alignSelf: 'flex-start',

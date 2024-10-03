@@ -28,49 +28,26 @@ const getRandomTimestamp = () => {
   return new Date(randomTime).toISOString(); // Return ISO timestamp
 };
 
+function generateRandomMessages(numMessages) {
+  const messageArray = [];
+
+  for (let i = 0; i < numMessages; i++) {
+    messageArray.push({
+      timestamp: getRandomTimestamp(),
+      message: getRandomMessage(),
+      fromUser: Math.random() > 0.5, // 50% chance of being true or false
+    });
+  }
+
+  return messageArray;
+}
+
 // display unencrypted message thread
 
 const ThreadScreen = () => {
-  const messageData = [
-    {
-      uuid: "uuid-user-1",
-      messages: [
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: true },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: false },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: true },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: false }
-      ]
-    },
-    {
-      uuid: "uuid-user-2",
-      messages: [
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: false },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: true },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: false },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: true }
-      ]
-    },
-    {
-      uuid: "uuid-user-3",
-      messages: [
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: true },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: false },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: true },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: false }
-      ]
-    },
-    {
-      uuid: "uuid-user-4",
-      messages: [
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: false },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: true },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: false },
-        { timestamp: getRandomTimestamp(), message: getRandomMessage(), fromUser: true }
-      ]
-    }
-  ];
+  messageData = generateRandomMessages(20);
 
-  const userMessages = messageData[0].messages; // Using the first user's messages for demo purposes
+  const userMessages = messageData; // Using the first user's messages for demo purposes
   const [messageInput, setMessageInput] = useState(''); // State to track the message input
   const [inputHeight, setInputHeight] = useState(40);
 

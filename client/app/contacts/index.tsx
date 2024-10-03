@@ -36,6 +36,7 @@ const ContactsScreen = () => {
   const handleEditContact = () => {
     if (selectedUUID) {
       setModalVisible(false);
+      navigation.setParams({ uuid: selectedUUID })
       router.push({
         pathname: "/contacts/edit",
         params: { uuid: selectedUUID }
