@@ -34,7 +34,7 @@ const MessagesScreen = () => {
 
   const newContact = () => {
     router.push({
-      pathname: "/share"
+      pathname: "/contacts"
     });
   };
 

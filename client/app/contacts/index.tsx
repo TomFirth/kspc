@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, View, Text, Pressable } from "react-native";
+import { Modal, View, Text, Pressable, Image } from "react-native";
 import { useRouter } from "expo-router";
 
 import { styles } from '@/styles/styles';
@@ -45,10 +45,6 @@ const ContactsScreen = () => {
 
   return (
     <View style={styles.main}>
-      <Pressable style={styles.button} onPress={() => router.push("share")}>
-        <Text style={styles.buttonText}>Add Contact</Text>
-      </Pressable>
-
       {sortedData.map((user) => (
         <Pressable
           key={user.uuid}
@@ -58,6 +54,13 @@ const ContactsScreen = () => {
           <Text style={styles.pressableText}>{user.username}</Text>
         </Pressable>
       ))}
+
+      <Pressable style={styles.floatingButton} onPress={() => router.push("share")}>
+        <Image
+          source={require('@/assets/user.png')} // Make sure the image path is correct
+          style={styles.floatingButtonImage}
+        />
+      </Pressable>
 
       <Modal
         animationType="fade"

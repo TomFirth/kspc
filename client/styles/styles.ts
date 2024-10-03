@@ -121,6 +121,10 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
   },
+  floatingButtonImage: {
+    width: 30,  // Adjust size to fit inside the button
+    height: 30,
+  },
   deleteButton: {
     width: '100%',
     padding: 15,
