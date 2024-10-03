@@ -3,7 +3,6 @@ import * as SecureStore from 'expo-secure-store';
 export const savePin = async (pin: string) => {
   try {
     await SecureStore.setItemAsync('userPin', pin);
-    console.log('PIN saved successfully');
   } catch (error) {
     console.error('Error saving PIN:', error);
   }
@@ -26,7 +25,6 @@ export const checkPin = async (pin: string): Promise<boolean> => {
 export const deletePin = async () => {
   try {
     await SecureStore.deleteItemAsync('userPin');
-    console.log('PIN deleted successfully');
   } catch (error) {
     console.error('Error deleting PIN:', error);
   }

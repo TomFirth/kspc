@@ -86,7 +86,6 @@ const HomeScreen = () => {
           autoFocus={true}
           value={tempUsername}
           onChangeText={(text) => setTempUsername(text)}
-          keyboardType="numeric"
         />
 
         <View style={styles.pinContainer}>

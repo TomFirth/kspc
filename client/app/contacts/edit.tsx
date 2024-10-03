@@ -1,22 +1,37 @@
 import { useState } from "react";
-import { Text, View, Pressable } from "react-native";
+import { Text, TextInput, View, Pressable, TouchableOpacity } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 
 import { styles } from '@/styles/styles';
 
-// display editable username
 // save
 
 const ShareScreen = () => {
-  const { uuid } = useLocalSearchParams();
+  const { selectedUUID, selectedUsername } = useLocalSearchParams();
+  const [contactUsername, setContactUsername] = useState('');
 
   const handleDeleteContact = () => {
     console.warn("Deleted contact (not really)");
   };
 
+  const handleSave = () => {
+    console.warn("Edited contact (not really)");
+  };
+
   return (
     <View style={styles.main}>
-      <Text style={styles.text}>Editing UUID: {uuid}</Text>
+      <Text style={styles.text}>Editing UUID: { selectedUUID }</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        placeholderTextColor="white"
+        autoFocus={true}
+        value={selectedUsername}
+        onChangeText={(text) => setContactUsername(text)}
+      />
+      <TouchableOpacity style={styles.button} onPress={handleSave}>
+        <Text style={styles.buttonText}>Update</Text>
+      </TouchableOpacity>
 
       <Pressable style={styles.deleteButton} onPress={handleDeleteContact}>
         <Text style={styles.ButtonText}>Delete Contact</Text>

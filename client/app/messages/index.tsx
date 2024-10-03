@@ -39,7 +39,7 @@ const MessagesScreen = () => {
   };
 
   return (
-    <View style={styles.main}>
+    <View style={styles.listMain}>
       {sortedData.map((user) => (
         <Pressable
           key={user.uuid}

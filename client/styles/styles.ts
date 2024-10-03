@@ -8,6 +8,14 @@ export const styles = StyleSheet.create({
     padding: 0,
     height: Dimensions.get("window").height
   },
+  listMain: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    margin: 0,
+    padding: 0,
+    height: Dimensions.get("window").height
+  },
   input: {
     backgroundColor: 'black',
     color: 'white',

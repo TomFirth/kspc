@@ -7,6 +7,7 @@ import { styles } from '@/styles/styles';
 const ContactsScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedUUID, setSelectedUUID] = useState<string | null>(null);
+  const [selectedUsername, setSelectedUsername] = useState<string | null>(null);
   const router = useRouter();
 
   const data = [
@@ -18,8 +19,9 @@ const ContactsScreen = () => {
 
   const sortedData = data.sort((a, b) => a.username.localeCompare(b.username));
 
-  const handlePress = (uuid: string) => {
+  const handlePress = (uuid: string, username: string) => {
     setSelectedUUID(uuid);
+    setSelectedUsername(username);
     setModalVisible(true);
   };
 
@@ -34,23 +36,22 @@ const ContactsScreen = () => {
   };
 
   const handleEditContact = () => {
-    if (selectedUUID) {
+    if (selectedUUID && selectedUsername) {
       setModalVisible(false);
-      navigation.setParams({ uuid: selectedUUID })
       router.push({
         pathname: "/contacts/edit",
-        params: { uuid: selectedUUID }
+        params: { selectedUUID: selectedUUID, selectedUsername: selectedUsername }
       });
     }
   };
 
   return (
-    <View style={styles.main}>
+    <View style={styles.listMain}>
       {sortedData.map((user) => (
         <Pressable
           key={user.uuid}
           style={styles.pressable}
-          onPress={() => handlePress(user.uuid)}
+          onPress={() => handlePress(user.uuid, user.username)}
         >
           <Text style={styles.pressableText}>{user.username}</Text>
         </Pressable>
