@@ -19,9 +19,9 @@ const ContactsScreen = () => {
 
   const sortedData = data.sort((a, b) => a.username.localeCompare(b.username));
 
-  const handlePress = (uuid: string, username: string) => {
-    setSelectedUUID(uuid);
-    setSelectedUsername(username);
+  const handlePress = (selectedUUID: string, selectedUsername: string) => {
+    setSelectedUUID(selectedUUID);
+    setSelectedUsername(selectedUsername);
     setModalVisible(true);
   };
 
@@ -30,7 +30,7 @@ const ContactsScreen = () => {
       setModalVisible(false);
       router.push({
         pathname: "/messages/message/[uuid]",
-        params: { selectedUUID: selectedUUID, selectedUsername: selectedUsername }
+        params: { selectedUUID, selectedUsername }
       });
     }
   };

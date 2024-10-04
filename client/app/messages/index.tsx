@@ -25,10 +25,10 @@ const MessagesScreen = () => {
 
   const router = useRouter();
 
-  const handlePress = (uuid: string) => {
+  const handlePress = ( selectedUUID: string, selectedUsername: string ) => {
     router.push({
       pathname: "/messages/message/[uuid]",
-      params: { uuid: uuid }
+      params: { selectedUUID, selectedUsername }
     });
   };
 
@@ -44,7 +44,7 @@ const MessagesScreen = () => {
         <Pressable
           key={user.uuid}
           style={styles.pressable}
-          onPress={() => handlePress(user.uuid)}
+          onPress={() => handlePress(user.uuid, user.username)}
         >
           <Text style={styles.pressableText}>{user.username}</Text>
           <Text style={styles.lastMessageText}>Last message: {new Date(user.timestamp).toLocaleString()}</Text>
