@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useNavigation } from "expo-router";
 
 import { styles } from '@/styles/styles';
 
@@ -45,11 +45,18 @@ function generateRandomMessages(numMessages) {
 // check last message read
 
 const ThreadScreen = () => {
-  messageData = generateRandomMessages(20);
+  const navigation = useNavigation();
+  const { selectedUUID, selectedUsername } = useLocalSearchParams();
+  const userMessages = generateRandomMessages(20);
 
-  const userMessages = messageData;
   const [messageInput, setMessageInput] = useState('');
   const [inputHeight, setInputHeight] = useState(40);
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: selectedUsername,
+    });
+  }, []);
 
   const MessageBubble = ({ message, fromUser }) => {
     return (
@@ -60,8 +67,6 @@ const ThreadScreen = () => {
     );
   };
 
-  const { uuid } = useLocalSearchParams();
-
   return (
     <View style={styles.main}>
       <KeyboardAvoidingView
@@ -69,7 +74,7 @@ const ThreadScreen = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}
       >
-        {/* Messages ScrollView */}
+
         <ScrollView style={styles.messageList}>
           {userMessages.map((message, index) => (
             <MessageBubble
@@ -85,9 +90,9 @@ const ThreadScreen = () => {
             value={messageInput}
             onChangeText={setMessageInput}
             placeholder="Type a message"
-            style={[styles.textInput, { height: Math.max(40, inputHeight) }]} // Adjust the height dynamically
+            style={[styles.textInput, { height: Math.max(40, inputHeight) }]}
             multiline
-            onContentSizeChange={(event) => setInputHeight(event.nativeEvent.contentSize.height)} // Adjust height
+            onContentSizeChange={(event) => setInputHeight(event.nativeEvent.contentSize.height)}
           />
         </View>
       </KeyboardAvoidingView>

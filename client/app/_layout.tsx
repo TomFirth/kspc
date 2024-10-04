@@ -3,11 +3,7 @@ import { RouteProp } from '@react-navigation/native';
 
 import { AuthProvider } from '../AuthContext';
 
-type MessageRouteParams = {
-  'messages/message/[uuid]': { uuid: string };
-};
-
-const RootLayout = ({ route }: { route: RouteProp<MessageRouteParams, 'messages/message/[uuid]'> }) => {
+const RootLayout = () => {
   return (
     <AuthProvider>
       <Stack>
@@ -20,12 +16,8 @@ const RootLayout = ({ route }: { route: RouteProp<MessageRouteParams, 'messages/
         <Stack.Screen name="contacts/index" options={{
           headerTitle: "Contacts"
         }} />
-        <Stack.Screen name="contacts/edit" options={{
-          headerTitle: "Edit Contact"
-        }} />
-        <Stack.Screen name="messages/message/[uuid]" options={{
-          headerTitle: "User: "
-        }} />
+        <Stack.Screen name="contacts/edit" />
+        <Stack.Screen name="messages/message/[uuid]" />
         <Stack.Screen name="share/index" options={{
           headerTitle: "Share",
           headerStyle: {

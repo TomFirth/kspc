@@ -18,12 +18,12 @@ const ShareScreen = () => {
   return (
     <View>
       <Image
-        source={require('@/assets/mobile.png')} // Path to the image
-        style={styles.image_mobile} // Define dimensions for the image
+        source={require('@/assets/mobile.png')}
+        style={styles.image_mobile}
       />
       <Image
-        source={require('@/assets/qr-code.png')} // Path to the image
-        style={styles.image_mobile} // Define dimensions for the image
+        source={require('@/assets/qr-code.png')}
+        style={styles.image_mobile}
       />
     </View>
   )

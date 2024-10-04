@@ -95,14 +95,14 @@ const HomeScreen = () => {
               style={styles.pinInput}
               value={digit}
               onChangeText={(value) => {
-                if (value.length <= 1) {  // Ensures only a single character is accepted
+                if (value.length <= 1) {
                   const newPin = [...pin];
-                  newPin[index] = value;  // Update the specific digit in the pin array
-                  setPin(newPin);  // Update state with the new pin array
+                  newPin[index] = value;
+                  setPin(newPin);
                 }
               }}
               keyboardType="numeric"
-              maxLength={1}  // Restricts to one character
+              maxLength={1}
             />
           ))}
         </View>
@@ -126,14 +126,14 @@ const HomeScreen = () => {
               style={styles.pinInput}
               value={digit}
               onChangeText={(value) => {
-                if (value.length <= 1) {  // Ensures only a single character is accepted
+                if (value.length <= 1) {
                   const newPin = [...pin];
-                  newPin[index] = value;  // Update the specific digit in the pin array
-                  setPin(newPin);  // Update state with the new pin array
+                  newPin[index] = value;
+                  setPin(newPin);
                 }
               }}
               keyboardType="numeric"
-              maxLength={1}  // Restricts to one character
+              maxLength={1}
             />
           ))}
         </View>

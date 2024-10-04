@@ -53,7 +53,7 @@ const MessagesScreen = () => {
 
       <Pressable style={styles.floatingButton} onPress={newContact}>
         <Image
-          source={require('@/assets/user.png')} // Make sure the image path is correct
+          source={require('@/assets/user.png')}
           style={styles.floatingButtonImage}
         />
       </Pressable>

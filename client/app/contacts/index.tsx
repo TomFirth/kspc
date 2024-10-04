@@ -30,7 +30,7 @@ const ContactsScreen = () => {
       setModalVisible(false);
       router.push({
         pathname: "/messages/message/[uuid]",
-        params: { uuid: selectedUUID }
+        params: { selectedUUID: selectedUUID, selectedUsername: selectedUsername }
       });
     }
   };
@@ -59,7 +59,7 @@ const ContactsScreen = () => {
 
       <Pressable style={styles.floatingButton} onPress={() => router.push("share")}>
         <Image
-          source={require('@/assets/qr-code.png')} // Make sure the image path is correct
+          source={require('@/assets/qr-code.png')}
           style={styles.floatingButtonImage}
         />
       </Pressable>

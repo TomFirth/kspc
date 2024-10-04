@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Text, TextInput, View, Pressable, TouchableOpacity } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams, useNavigation } from "expo-router";
 
 import { styles } from '@/styles/styles';
 
 // save
 
 const ShareScreen = () => {
+  const navigation = useNavigation();
   const { selectedUUID, selectedUsername } = useLocalSearchParams();
   const [contactUsername, setContactUsername] = useState('');
+
+  useEffect(() => {
+    navigation.setOptions({
+      title: `Edit: ${selectedUsername}`,
+    });
+  }, []);
 
   const handleDeleteContact = () => {
     console.warn("Deleted contact (not really)");
