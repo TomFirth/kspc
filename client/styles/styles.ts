@@ -59,10 +59,17 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
-  pressable: {
+  pressableDark: {
     width: '100%',
     padding: 15,
     backgroundColor: '#25D366',
+    alignItems: 'left',
+    justifyContent: 'center',
+  },
+  pressable: {
+    width: '100%',
+    padding: 15,
+    backgroundColor: '#B4D5C0',
     alignItems: 'left',
     justifyContent: 'center',
   },

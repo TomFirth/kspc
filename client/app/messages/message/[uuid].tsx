@@ -38,6 +38,7 @@ function generateRandomMessages(numMessages) {
     });
   }
 
+  messageArray.sort((a, b) => a.timestamp - b.timestamp);
   return messageArray;
 }
 
@@ -62,7 +63,7 @@ const ThreadScreen = () => {
     return (
       <View style={[styles.messageContainer, fromUser ? styles.userMessage : styles.receivedMessage]}>
         <Text style={styles.messageText}>{message.message}</Text>
-        <Text style={styles.timestampText}>{new Date(message.timestamp).toLocaleString()}</Text>
+        <Text style={styles.timestampText}>{new Date(message.timestamp).toLocaleString('en-GB', { timeZone: 'UTC' })}</Text>
       </View>
     );
   };

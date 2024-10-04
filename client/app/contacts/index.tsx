@@ -15,6 +15,10 @@ const ContactsScreen = () => {
     { username: "Bob", uuid: "uuid-user-2" },
     { username: "Charlie", uuid: "uuid-user-3" },
     { username: "David", uuid: "uuid-user-4" },
+    { username: "Ethan", uuid: "uuid-user-5" },
+    { username: "Freddie", uuid: "uuid-user-6" },
+    { username: "George", uuid: "uuid-user-7" },
+    { username: "Harry", uuid: "uuid-user-8" },
   ];
 
   const sortedData = data.sort((a, b) => a.username.localeCompare(b.username));
@@ -50,7 +54,7 @@ const ContactsScreen = () => {
       {sortedData.map((user) => (
         <Pressable
           key={user.uuid}
-          style={styles.pressable}
+          style={styles.pressableDark}
           onPress={() => handlePress(user.uuid, user.username)}
         >
           <Text style={styles.pressableText}>{user.username}</Text>

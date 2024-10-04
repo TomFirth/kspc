@@ -4,8 +4,7 @@ import { router, useRouter } from "expo-router";
 import { styles } from '@/styles/styles';
 
 // display all active conversations with contacts
-// only display username and alert to display new message (maybe contact tile background could be light green. No new messages dark green)
-// press to open thread
+// only display username and alert to display new message (maybe contact tile background could be light green. new messages darker green)
 
 const getRandomTimestamp = () => {
   const now = new Date();
@@ -19,13 +18,17 @@ const MessagesScreen = () => {
     { username: "Bob", uuid: "uuid-user-2", timestamp: getRandomTimestamp() },
     { username: "Charlie", uuid: "uuid-user-3", timestamp: getRandomTimestamp() },
     { username: "David", uuid: "uuid-user-4", timestamp: getRandomTimestamp() },
+    { username: "Ethan", uuid: "uuid-user-5", timestamp: getRandomTimestamp() },
+    { username: "Freddie", uuid: "uuid-user-6", timestamp: getRandomTimestamp() },
+    { username: "George", uuid: "uuid-user-7", timestamp: getRandomTimestamp() },
+    { username: "Harry", uuid: "uuid-user-8", timestamp: getRandomTimestamp() },
   ];
 
   const sortedData = data.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 
   const router = useRouter();
 
-  const handlePress = ( selectedUUID: string, selectedUsername: string ) => {
+  const handlePress = (selectedUUID: string, selectedUsername: string) => {
     router.push({
       pathname: "/messages/message/[uuid]",
       params: { selectedUUID, selectedUsername }
@@ -40,14 +43,14 @@ const MessagesScreen = () => {
 
   return (
     <View style={styles.listMain}>
-      {sortedData.map((user) => (
+      {sortedData.map((user, index) => (
         <Pressable
           key={user.uuid}
-          style={styles.pressable}
+          style={index === 0 || index == 1 || index == 2 ? styles.pressableDark : styles.pressable}
           onPress={() => handlePress(user.uuid, user.username)}
         >
           <Text style={styles.pressableText}>{user.username}</Text>
-          <Text style={styles.lastMessageText}>Last message: {new Date(user.timestamp).toLocaleString()}</Text>
+          <Text style={styles.lastMessageText}>Last message: {new Date(user.timestamp).toLocaleString('en-GB', { timeZone: 'UTC' })}</Text>
         </Pressable>
       ))}
 
