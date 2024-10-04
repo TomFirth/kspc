@@ -3,6 +3,7 @@ import { View, Text, ScrollView, StyleSheet, TextInput, KeyboardAvoidingView, Pl
 import { useLocalSearchParams, useNavigation } from "expo-router";
 
 import { styles } from '@/styles/styles';
+import { getLocale } from '@/util/locale';
 
 const getRandomMessage = () => {
   const messages = [
@@ -52,18 +53,21 @@ const ThreadScreen = () => {
 
   const [messageInput, setMessageInput] = useState('');
   const [inputHeight, setInputHeight] = useState(40);
+  const [locale, setLocale] = useState('');
 
   useEffect(() => {
     navigation.setOptions({
       title: selectedUsername,
     });
+    const loc = getLocale();
+    setLocale(loc);
   }, []);
 
   const MessageBubble = ({ message, fromUser }) => {
     return (
       <View style={[styles.messageContainer, fromUser ? styles.userMessage : styles.receivedMessage]}>
         <Text style={styles.messageText}>{message.message}</Text>
-        <Text style={styles.timestampText}>{new Date(message.timestamp).toLocaleString('en-GB', { timeZone: 'UTC' })}</Text>
+        <Text style={styles.timestampText}>{new Date(message.timestamp).toLocaleString(locale, { timeZone: 'UTC' })}</Text>
       </View>
     );
   };

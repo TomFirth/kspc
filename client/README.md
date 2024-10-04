@@ -59,12 +59,13 @@ You can start developing by editing the files inside the **app** directory. This
 [x] create initial form (pin)
 [x] home form saves username (plain text & uuid)
 [x] home form saves pin (secure)
+[x] display messages and sort by latest
+[x] display individual message thread
+[ ] app settings (username, theme)
+[ ] add contact (save shared data)
+[ ] edit contact (username)
 [ ] basic auth for navigation (prevent navigating to any page other than without pin)
-[ ] create rsa
+[ ] create public key
 [ ] encrypt rsa with user's pin and store securely
 [ ] share public key via nfc (send username/uuid/public key && receive same)
-[ ] create contacts list
 [ ] create messaging server (send/receive)
-[ ] display messages and sort by latest
-[ ] display individual message thread
-[ ] app settings (username, theme)

@@ -17,12 +17,15 @@ const RootLayout = () => {
           headerTitle: "Contacts"
         }} />
         <Stack.Screen name="contacts/edit" />
-        <Stack.Screen name="messages/message/[uuid]" />
+        <Stack.Screen name="messages/thread/[uuid]" />
         <Stack.Screen name="share/index" options={{
           headerTitle: "Share",
           headerStyle: {
             backgroundColor: "red"
           }
+        }} />
+        <Stack.Screen name="settings/index" options={{
+          headerTitle: "Settings"
         }} />
       </Stack>
     </AuthProvider>

@@ -14,15 +14,18 @@ import { styles } from '@/styles/styles';
 } */
 // open edit contact
 
+// pre sharing:
+// have button that creates new contact
+
 const ShareScreen = () => {
   return (
     <View>
       <Image
-        source={require('@/assets/mobile.png')}
+        source={require('@/assets/share/mobile.png')}
         style={styles.image_mobile}
       />
       <Image
-        source={require('@/assets/qr-code.png')}
+        source={require('@/assets/share/qr-code.png')}
         style={styles.image_mobile}
       />
     </View>

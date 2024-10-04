@@ -1,18 +1,27 @@
+import { useEffect, useState } from "react";
 import { Pressable, Text, View, Image } from "react-native";
 import { router, useRouter } from "expo-router";
 
 import { styles } from '@/styles/styles';
+import { getLocale } from '@/util/locale';
 
 // display all active conversations with contacts
 // only display username and alert to display new message (maybe contact tile background could be light green. new messages darker green)
 
 const getRandomTimestamp = () => {
   const now = new Date();
-  const randomTime = now.getTime() - Math.floor(Math.random() * 10000000000); // Random time in milliseconds
-  return new Date(randomTime).toISOString(); // Return ISO timestamp
+  const randomTime = now.getTime() - Math.floor(Math.random() * 10000000000);
+  return new Date(randomTime).toISOString();
 };
 
 const MessagesScreen = () => {
+  const [locale, setLocale] = useState('');
+
+  useEffect(() => {
+    const loc = getLocale();
+    setLocale(loc);
+  }, []);
+
   const data = [
     { username: "Alice", uuid: "uuid-user-1", timestamp: getRandomTimestamp() },
     { username: "Bob", uuid: "uuid-user-2", timestamp: getRandomTimestamp() },
@@ -30,7 +39,7 @@ const MessagesScreen = () => {
 
   const handlePress = (selectedUUID: string, selectedUsername: string) => {
     router.push({
-      pathname: "/messages/message/[uuid]",
+      pathname: "/messages/thread/[uuid]",
       params: { selectedUUID, selectedUsername }
     });
   };
@@ -56,7 +65,7 @@ const MessagesScreen = () => {
 
       <Pressable style={styles.floatingButton} onPress={newContact}>
         <Image
-          source={require('@/assets/user.png')}
+          source={require('@/assets/contacts/user.png')}
           style={styles.floatingButtonImage}
         />
       </Pressable>

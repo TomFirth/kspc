@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
+
 export const styles = StyleSheet.create({
   main: {
     flex: 1,
@@ -207,5 +208,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     backgroundColor: '#f9f9f9',
     fontSize: 16,
-  }
+  },
+  settingsSelected: {},
+  settingsUnselected: {},
+  settingsIcon: {}
 });
