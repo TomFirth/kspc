@@ -10,7 +10,8 @@ export const createUserTable = async (): void => {
 
 export const saveUser = async (uuid: string, username: string): void => {
   const db = await SQLite.openDatabaseAsync(dbName, { useNewConnection: true });
-  await db.runAsync(`INSERT INTO ${tableName} (uuid, username, theme) VALUES (?, ?, ?)`, uuid, username, 'dark');
+  await db.runAsync(`INSERT INTO ${tableName} (uuid, username, theme) VALUES (?, ?, ?)`,
+    [uuid, username, 'dark']);
 };
 
 export const getUser = async () => {
@@ -24,4 +25,8 @@ export const deleteDB = async (): void => {
   await db.execAsync(`DROP TABLE IF EXISTS ${tableName};`);
 };
 
-// update user settings
+export const updateUser = async (uuid: string, username: string, theme: string): void => {
+  const db = await SQLite.openDatabaseAsync(dbName, { useNewConnection: true });
+  await db.runAsync(`UPDATE ${tableName} SET username = ? AND SET theme = ? WHERE uuid = ?`,
+    [username, theme, uuid]);
+};

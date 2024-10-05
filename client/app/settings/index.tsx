@@ -9,15 +9,19 @@ const SettingsScreen = () => {
   const [tempUsername, setTempUsername] = useState('');
   const [theme, setTheme] = useState('');
 
-  const loadSettings = () => {
+  useEffect(() => {
     const { uuid, username, theme } = getUser();
     setUuid(uuid);
     setTempUsername(username);
     setTheme(theme);
-  };
+  }, [])
 
   const handleSave = () => {
-    console.warn("Edited contact (not really)");
+    console.warn("Updated settings (not really)");
+  };
+
+  const theme = (theme: string) => {
+    setTheme(theme);
   };
 
   return (

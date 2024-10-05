@@ -44,7 +44,7 @@ const MessagesScreen = () => {
     });
   };
 
-  const newContact = () => {
+  const contacts = () => {
     router.push({
       pathname: "/contacts"
     });
@@ -63,7 +63,7 @@ const MessagesScreen = () => {
         </Pressable>
       ))}
 
-      <Pressable style={styles.floatingButton} onPress={newContact}>
+      <Pressable style={styles.floatingButton} onPress={contacts}>
         <Image
           source={require('@/assets/contacts/user.png')}
           style={styles.floatingButtonImage}

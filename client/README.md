@@ -61,7 +61,7 @@ You can start developing by editing the files inside the **app** directory. This
 [x] home form saves pin (secure)
 [x] display messages and sort by latest
 [x] display individual message thread
-[ ] app settings (username, theme)
+[x] app settings (username, theme)
 [ ] add contact (save shared data)
 [ ] edit contact (username)
 [ ] basic auth for navigation (prevent navigating to any page other than without pin)

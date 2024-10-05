@@ -1,5 +1,16 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
+const { height, width } = Dimensions.get('window');
+
+const darkGrey = '#4D4D4D';
+const lightGrey = '#B3B3B3';
+const black = '#000000';
+
+const darkGreen = '#25D366';
+const lightGreen = '#B4D5C0';
+
+const warningColour = '#FF0000';
+
 export const styles = StyleSheet.create({
   main: {
     flex: 1,
@@ -7,7 +18,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 0,
     padding: 0,
-    height: Dimensions.get("window").height
+    height: height,
   },
   listMain: {
     flex: 1,
@@ -15,10 +26,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 0,
     padding: 0,
-    height: Dimensions.get("window").height
+    height: height
   },
   input: {
-    backgroundColor: 'black',
+    backgroundColor: black,
     color: 'white',
     borderRadius: 10,
     paddingHorizontal: 15,
@@ -36,7 +47,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   pinInput: {
-    backgroundColor: 'black',
+    backgroundColor: black,
     color: 'white',
     borderRadius: 10,
     padding: 10,
@@ -47,7 +58,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
   },
   button: {
-    backgroundColor: 'black',
+    backgroundColor: black,
     borderRadius: 10,
     paddingVertical: 12,
     paddingHorizontal: 30,
@@ -63,14 +74,14 @@ export const styles = StyleSheet.create({
   pressableDark: {
     width: '100%',
     padding: 15,
-    backgroundColor: '#25D366',
+    backgroundColor: darkGreen,
     alignItems: 'left',
     justifyContent: 'center',
   },
   pressable: {
     width: '100%',
     padding: 15,
-    backgroundColor: '#B4D5C0',
+    backgroundColor: lightGreen,
     alignItems: 'left',
     justifyContent: 'center',
   },
@@ -99,7 +110,7 @@ export const styles = StyleSheet.create({
   modalButton: {
     width: '100%',
     padding: 15,
-    backgroundColor: '#25D366',
+    backgroundColor: darkGreen,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
@@ -123,7 +134,7 @@ export const styles = StyleSheet.create({
     right: 30,
     width: 60,
     height: 60,
-    backgroundColor: '#25D366',
+    backgroundColor: darkGreen,
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
@@ -145,7 +156,7 @@ export const styles = StyleSheet.create({
   deleteButton: {
     width: '100%',
     padding: 15,
-    backgroundColor: '#FF0000',
+    backgroundColor: warning,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
@@ -177,11 +188,11 @@ export const styles = StyleSheet.create({
   },
   userMessage: {
     alignSelf: 'flex-end',
-    backgroundColor: '#25D366',
+    backgroundColor: darkGreen,
   },
   receivedMessage: {
     alignSelf: 'flex-start',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'white',
   },
   messageText: {
     fontSize: 16,
@@ -195,7 +206,7 @@ export const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     padding: 10,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     borderTopWidth: 1,
     borderColor: '#ddd',
   },
@@ -209,7 +220,25 @@ export const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     fontSize: 16,
   },
-  settingsSelected: {},
-  settingsUnselected: {},
-  settingsIcon: {}
+  settingsSelected: {
+    width: width * 0.45, // 45% of screen width
+    height: width * 0.45, // Square container
+    backgroundColor: darkGrey, // Use the dark grey variable
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  settingsUnselected: {
+    width: width * 0.45,
+    height: width * 0.45,
+    backgroundColor: lightGrey, // Use the light grey variable
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  settingsIcon: {
+    width: '50%',
+    height: '50%',
+    resizeMode: 'contain',
+  },
 });
