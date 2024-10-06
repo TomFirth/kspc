@@ -46,10 +46,11 @@ You can start developing by editing the files inside the **app** directory. This
 #### share format
 ```
 {
-  createdAt: 1301090400
-  uuid: uuid
-  username: username
-  key: rsa public key
+  createdAt: 1301090400,
+  uuid: uuid,
+  username: username,
+  key: rsa public key,
+  lastRead: 1301090400
 }
 ```
 

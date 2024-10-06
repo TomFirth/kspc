@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Text, TextInput, View, Pressable, TouchableOpacity } from "react-native";
 
 import { styles } from '@/styles/styles';
-import { getUser, updateUser } from '@/db/user';
+import { deleteUser, getUser, updateUser } from '@/db/user';
 
 const SettingsScreen = () => {
   const [uuid, setUuid] = useState('');
@@ -20,8 +20,17 @@ const SettingsScreen = () => {
     console.warn("Updated settings (not really)");
   };
 
-  const theme = (theme: string) => {
+  const saveTheme = (theme: string) => {
     setTheme(theme);
+  };
+
+  const deleteUser = async () => {
+    if (username) {
+      await deleteDB();
+      router.push({
+        pathname: "/"
+      })
+    }
   };
 
   return (
@@ -36,7 +45,7 @@ const SettingsScreen = () => {
       />
       <Pressable
         style={theme = 'light' ? styles.settingsSelected : styles.settingsUnselected}
-        onPress={theme("light")}>
+        onPress={saveTheme("light")}>
         <Image
           source={require('@/assets/settings/light.png')}
           style={styles.settingsIcon}
@@ -44,7 +53,7 @@ const SettingsScreen = () => {
       </Pressable>
       <Pressable
         style={theme = 'dark' ? styles.settingsSelected : styles.settingsUnselected}
-        onPress={theme("dark")}>
+        onPress={saveTheme("dark")}>
         <Image
           source={require('@/assets/settings/dark.png')}
           style={styles.settingsIcon}
@@ -53,6 +62,10 @@ const SettingsScreen = () => {
       <TouchableOpacity style={styles.button} onPress={handleSave}>
         <Text style={styles.buttonText}>Update</Text>
       </TouchableOpacity>
+
+      <Pressable style={styles.deleteButton} onPress={deleteUser}>
+        <Text style={styles.ButtonText}>Delete User</Text>
+      </Pressable>
     </View>
   )
 }

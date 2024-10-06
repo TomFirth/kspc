@@ -67,7 +67,7 @@ const ThreadScreen = () => {
     return (
       <View style={[styles.messageContainer, fromUser ? styles.userMessage : styles.receivedMessage]}>
         <Text style={styles.messageText}>{message.message}</Text>
-        <Text style={styles.timestampText}>{new Date(message.timestamp).toLocaleString(locale, { timeZone: 'UTC' })}</Text>
+        <Text style={styles.timestampText}>{new Date(message.timestamp).toLocaleString('en-GB', { timeZone: 'UTC' })}</Text>
       </View>
     );
   };

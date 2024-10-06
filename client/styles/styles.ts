@@ -156,7 +156,7 @@ export const styles = StyleSheet.create({
   deleteButton: {
     width: '100%',
     padding: 15,
-    backgroundColor: warning,
+    backgroundColor: warningColour,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',

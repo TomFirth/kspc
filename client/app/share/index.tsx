@@ -1,4 +1,4 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, Pressable } from "react-native";
 
 import { styles } from '@/styles/styles';
 
@@ -6,7 +6,7 @@ import { styles } from '@/styles/styles';
 
 // open nfc
 // decrypt public key
-// send/recieve:
+// send/receive:
 /* {
   uuid
   username
@@ -15,11 +15,24 @@ import { styles } from '@/styles/styles';
 // open edit contact
 
 // pre sharing:
-// have button that creates new contact
+// add contact to send random data
+// contact design:
+/*
+{
+  username: username,
+  uuid: uuid,
+  lastRead: 1301090400
+  key: ''
+}
+*/
 
 const ShareScreen = () => {
-  const handlePress = (uuid: string, username: string, key: string) => {
+  const handlePress = (selectedUUID: string, selectedUsername: string, selectedKey: string) => {
     console.warn("Added contact (not really)");
+    router.push({
+      pathname: "/contacts/edit",
+      params: { selectedUUID, selectedUsername, selectedKey }
+    });
   };
 
   return (
@@ -33,7 +46,6 @@ const ShareScreen = () => {
         style={styles.image_mobile}
       />
       <Pressable
-        key={user.uuid}
         style={styles.button}
         onPress={() => handlePress('', '', '')}
       >

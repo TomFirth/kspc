@@ -67,15 +67,6 @@ const HomeScreen = () => {
     }
   }
 
-  const deleteUser = async () => {
-    if (username) {
-      await deleteDB();
-      router.push({
-        pathname: "/"
-      })
-    }
-  }
-
   if (!isAuthenticated) {
     return (
       <View style={styles.main}>
@@ -147,10 +138,6 @@ const HomeScreen = () => {
         </Pressable>
 
         <Text>Logged in: {username ? username : "None"}</Text>
-
-        <TouchableOpacity style={styles.button} onPress={deleteUser}>
-          <Text style={styles.buttonText}>Delete User</Text>
-        </TouchableOpacity>
       </View>
     );
   }

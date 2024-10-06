@@ -1,11 +1,10 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
 # dependencies
-client/node_modules/
+node_modules/
 
 # Expo
 .expo/
-.idea/
 dist/
 web-build/
 
