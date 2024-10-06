@@ -36,7 +36,7 @@ You can start developing by editing the files inside the **app** directory. This
 #### message format
 ```
 {
-  createdAt: 1301090400,
+  createdAt: timestamp,
   to: uuid,
   from: uuid,
   message: <encrypted data>
@@ -46,11 +46,11 @@ You can start developing by editing the files inside the **app** directory. This
 #### share format
 ```
 {
-  createdAt: 1301090400,
+  createdAt: timestamp,
   uuid: uuid,
   username: username,
   key: rsa public key,
-  lastRead: 1301090400
+  read: boolean
 }
 ```
 

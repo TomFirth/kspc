@@ -1,7 +1,7 @@
 import * as SQLite from 'expo-sqlite';
 
 const dbName = 'kspc.db';
-const tableName = 'kspcUser';
+const tableName = 'user';
 
 export const createUserTable = async (): void => {
   const db = await SQLite.openDatabaseAsync(dbName, { useNewConnection: true });
