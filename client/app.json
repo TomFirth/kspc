@@ -20,11 +20,12 @@
       "permissions": [
         "INTERNET",
         "ACCESS_NETWORK_STATE",
-        "USE_BIOMETRIC",
+        "CAMERA",
         "FOREGROUND_SERVICE",
         "READ_EXTERNAL_STORAGE",
         "WRITE_EXTERNAL_STORAGE",
-        "VIBRATE"
+        "VIBRATE",
+        "NFC"
       ],
       "icon": "./assets/adaptive-icon.png",
       "adaptiveIcon": {

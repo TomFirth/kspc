@@ -1,6 +1,11 @@
 import { Text, View, Image, Pressable } from "react-native";
+import { router } from "expo-router";
+import { v4 as uuidv4 } from 'uuid';
 
+import { saveContact } from '@/db/contacts';
 import { styles } from '@/styles/styles';
+import { getTimestamp } from '@/util/utilities';
+import { generateKeyPair } from '@/util/encrypt';
 
 // QR code for users to share the app's download page
 
@@ -12,26 +17,28 @@ import { styles } from '@/styles/styles';
   username
   public key
 } */
-// open edit contact
 
-// pre sharing:
-// add contact to send random data
-// contact design:
-/*
-{
-  username: username,
-  uuid: uuid,
-  lastRead: 1301090400
-  key: ''
-}
-*/
+const firstNames = ['Adam', 'Bob', 'Charlie', 'David', 'Edward', 'Frank', 'George', 'Harry', 'Ian', 'Jack'];
+const surnames = ['Anderson', 'Brown', 'Clark', 'Davis', 'Evans', 'Fisher', 'Green', 'Harris', 'Ingram', 'Jones'];
 
 const ShareScreen = () => {
-  const handlePress = (selectedUUID: string, selectedUsername: string, selectedKey: string) => {
-    console.warn("Added contact (not really)");
+  function generateRandomName() {
+    const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const randomSurname = surnames[Math.floor(Math.random() * surnames.length)];
+
+    const uuid = uuidv4();
+    const fullName = `${randomFirstName} ${randomSurname}`;
+
+    return { fullName, uuid };
+  }
+
+  const handlePress = () => {
+    const { uuid, username } = generateRandomName();
+    const key = generateKeyPair(uuid);
+    saveContact(uuid, username, key, true, getTimestamp());
     router.push({
       pathname: "/contacts/edit",
-      params: { selectedUUID, selectedUsername, selectedKey }
+      params: { selectedUUID: uuid, selectedUsername: username }
     });
   };
 
@@ -47,7 +54,7 @@ const ShareScreen = () => {
       />
       <Pressable
         style={styles.button}
-        onPress={() => handlePress('', '', '')}
+        onPress={() => handlePress()}
       >
         <Text style={styles.buttonText}>Add Contact</Text>
       </Pressable>

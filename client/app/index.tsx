@@ -22,12 +22,12 @@ const HomeScreen = () => {
           pathname: "/messages"
         })
       }
-      createUserTable();
+      await createUserTable();
       const user = await getUser();
       setUsername(user.username);
       setUuid(user.uuid);
     })();
-  }, [])
+  }, []);
 
   const handleSave = async () => {
     const tempPin = pin.join('').trim();
@@ -54,7 +54,7 @@ const HomeScreen = () => {
     } else {
       console.warn('Username cannot be empty');
     }
-  };
+  }
 
   const handlePinSave = async () => {
     const tempPin = pin.join('').trim();

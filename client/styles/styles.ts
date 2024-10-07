@@ -241,4 +241,7 @@ export const styles = StyleSheet.create({
     height: '50%',
     resizeMode: 'contain',
   },
+  noContactsText: {
+    marginVertical: 10
+  }
 });

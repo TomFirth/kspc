@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { Text, TextInput, View, Pressable, TouchableOpacity } from "react-native";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 
+import { updateContact } from '@/db/contacts';
 import { styles } from '@/styles/styles';
-
-// save
 
 const ShareScreen = () => {
   const navigation = useNavigation();
@@ -12,17 +11,23 @@ const ShareScreen = () => {
   const [contactUsername, setContactUsername] = useState('');
 
   useEffect(() => {
-    navigation.setOptions({
-      title: `Edit: ${selectedUsername}`,
-    });
+    updateHeaderTitle(selectedUsername);
   }, []);
+
+  const updateHeaderTitle = (username) => {
+    navigation.setOptions({
+      title: `Edit: ${username}`,
+    });
+  }
 
   const handleDeleteContact = () => {
     console.warn("Deleted contact (not really)");
   };
 
-  const handleSave = () => {
-    console.warn("Edited contact (not really)");
+  const handleSave = async () => {
+    updateHeaderTitle(contactUsername);
+    await updateContact(selectedUUID, contactUsername);
+    console.warning('Contact Updated');
   };
 
   return (

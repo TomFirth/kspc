@@ -63,10 +63,10 @@ You can start developing by editing the files inside the **app** directory. This
 [x] display messages and sort by latest
 [x] display individual message thread
 [x] app settings (username, theme)
+[x] edit contact (username)
+[x] create keys
 [ ] add contact (save shared data)
-[ ] edit contact (username)
 [ ] basic auth for navigation (prevent navigating to any page other than without pin)
-[ ] create public key
 [ ] encrypt rsa with user's pin and store securely
 [ ] share public key via nfc (send username/uuid/public key && receive same)
 [ ] create messaging server (send/receive)

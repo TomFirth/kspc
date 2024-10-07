@@ -1,27 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, View, Text, Pressable, Image } from "react-native";
 import { useRouter } from "expo-router";
 
+import { createContactsTable, getAllContacts } from '@/db/contacts';
 import { styles } from '@/styles/styles';
 
 const ContactsScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedUUID, setSelectedUUID] = useState<string | null>(null);
   const [selectedUsername, setSelectedUsername] = useState<string | null>(null);
+  const [contacts, setContacts] = useState([]);
   const router = useRouter();
 
-  const data = [
-    { username: "Alice", uuid: "uuid-user-1" },
-    { username: "Bob", uuid: "uuid-user-2" },
-    { username: "Charlie", uuid: "uuid-user-3" },
-    { username: "David", uuid: "uuid-user-4" },
-    { username: "Ethan", uuid: "uuid-user-5" },
-    { username: "Freddie", uuid: "uuid-user-6" },
-    { username: "George", uuid: "uuid-user-7" },
-    { username: "Harry", uuid: "uuid-user-8" },
-  ];
-
-  const sortedData = data.sort((a, b) => a.username.localeCompare(b.username));
+  useEffect(() => {
+    const getContacts = async () => {
+      await createContactsTable();
+      const allContacts = await getAllContacts();
+      setContacts(allContacts);
+    }
+    getContacts();
+  }, [])
 
   const handlePress = (selectedUUID: string, selectedUsername: string) => {
     setSelectedUUID(selectedUUID);
@@ -51,15 +49,19 @@ const ContactsScreen = () => {
 
   return (
     <View style={styles.listMain}>
-      {sortedData.map((user) => (
-        <Pressable
-          key={user.uuid}
-          style={styles.pressableDark}
-          onPress={() => handlePress(user.uuid, user.username)}
-        >
-          <Text style={styles.pressableText}>{user.username}</Text>
-        </Pressable>
-      ))}
+      {contacts.length > 0 ? (
+        contacts.map(user => (
+          <Pressable
+            key={user.uuid}
+            style={styles.pressableDark}
+            onPress={() => handlePress(user.uuid, user.username)}
+          >
+            <Text style={styles.pressableText}>{user.username}</Text>
+          </Pressable>
+        ))
+      ) : (
+        <Text style={styles.noContactsText}>There are currently no contacts</Text>
+      )}
 
       <Pressable style={styles.floatingButton} onPress={() => router.push("share")}>
         <Image

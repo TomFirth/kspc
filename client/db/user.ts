@@ -5,7 +5,10 @@ const tableName = 'user';
 
 export const createUserTable = async (): void => {
   const db = await SQLite.openDatabaseAsync(dbName, { useNewConnection: true });
-  await db.execAsync(`CREATE TABLE IF NOT EXISTS ${tableName} (uuid TEXT PRIMARY KEY NOT NULL, username TEXT NOT NULL);`);
+  await db.execAsync(`CREATE TABLE IF NOT EXISTS ${tableName} (
+    uuid TEXT PRIMARY KEY NOT NULL,
+    username TEXT NOT NULL
+  );`);
 };
 
 export const saveUser = async (uuid: string, username: string): void => {
@@ -17,6 +20,7 @@ export const saveUser = async (uuid: string, username: string): void => {
 export const getUser = async () => {
   const db = await SQLite.openDatabaseAsync(dbName, { useNewConnection: true });
   const row = await db.getFirstAsync(`SELECT * FROM ${tableName}`);
+  console.log('user.ts', row);
   return { uuid: row.uuid, username: row.username }
 };
 
