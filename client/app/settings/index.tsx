@@ -1,19 +1,27 @@
 import { useEffect, useState } from "react";
-import { Text, TextInput, View, Pressable, TouchableOpacity } from "react-native";
+import { Text, TextInput, View, Pressable, TouchableOpacity, Image } from "react-native";
+import { router } from "expo-router";
 
 import { styles } from '@/styles/styles';
-import { deleteUser, getUser, updateUser } from '@/db/user';
+import { deleteDB, getUser, updateUser } from '@/db/user';
 
 const SettingsScreen = () => {
-  const [uuid, setUuid] = useState('');
+  const [settingsUuid, setSettingsUuid] = useState('');
   const [tempUsername, setTempUsername] = useState('');
   const [theme, setTheme] = useState('');
 
   useEffect(() => {
-    const { uuid, username, theme } = getUser();
-    setUuid(uuid);
-    setTempUsername(username);
-    setTheme(theme);
+    const loadSettings = async () => {
+      try {
+        const user = await getUser();
+        setSettingsUuid(user.uuid);
+        setTempUsername(user.username);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+
+    loadSettings();
   }, [])
 
   const handleSave = () => {
@@ -25,7 +33,7 @@ const SettingsScreen = () => {
   };
 
   const deleteUser = async () => {
-    if (username) {
+    if (tempUsername) {
       await deleteDB();
       router.push({
         pathname: "/"
@@ -44,16 +52,16 @@ const SettingsScreen = () => {
         onChangeText={(text) => setTempUsername(text)}
       />
       <Pressable
-        style={theme = 'light' ? styles.settingsSelected : styles.settingsUnselected}
-        onPress={saveTheme("light")}>
+        style={theme == 'light' ? styles.settingsSelected : styles.settingsUnselected}
+        onPress={() => saveTheme("light")}>
         <Image
           source={require('@/assets/settings/light.png')}
           style={styles.settingsIcon}
         />
       </Pressable>
       <Pressable
-        style={theme = 'dark' ? styles.settingsSelected : styles.settingsUnselected}
-        onPress={saveTheme("dark")}>
+        style={theme == 'dark' ? styles.settingsSelected : styles.settingsUnselected}
+        onPress={() => saveTheme("dark")}>
         <Image
           source={require('@/assets/settings/dark.png')}
           style={styles.settingsIcon}
@@ -64,7 +72,7 @@ const SettingsScreen = () => {
       </TouchableOpacity>
 
       <Pressable style={styles.deleteButton} onPress={deleteUser}>
-        <Text style={styles.ButtonText}>Delete User</Text>
+        <Text style={styles.buttonText}>Delete User</Text>
       </Pressable>
     </View>
   )

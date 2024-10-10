@@ -1,5 +1,4 @@
 import { Stack } from "expo-router";
-import { RouteProp } from '@react-navigation/native';
 
 import { AuthProvider } from '../AuthContext';
 

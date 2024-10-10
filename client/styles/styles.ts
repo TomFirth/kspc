@@ -75,14 +75,14 @@ export const styles = StyleSheet.create({
     width: '100%',
     padding: 15,
     backgroundColor: darkGreen,
-    alignItems: 'left',
+    // alignItems: 'left',
     justifyContent: 'center',
   },
   pressable: {
     width: '100%',
     padding: 15,
     backgroundColor: lightGreen,
-    alignItems: 'left',
+    // alignItems: 'left',
     justifyContent: 'center',
   },
   pressableText: {
@@ -124,9 +124,6 @@ export const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     fontWeight: 'bold',
-  },
-  text: {
-    fontSize: 20,
   },
   floatingButton: {
     position: 'absolute',
@@ -243,5 +240,6 @@ export const styles = StyleSheet.create({
   },
   noContactsText: {
     marginVertical: 10
-  }
+  },
+  lastMessageText: {}
 });

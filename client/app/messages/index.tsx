@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Pressable, Text, View, Image } from "react-native";
-import { router, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 
 import { styles } from '@/styles/styles';
 import { getLocale } from '@/util/locale';

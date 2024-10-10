@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, StyleSheet, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, ScrollView, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { useLocalSearchParams, useNavigation } from "expo-router";
 
 import { styles } from '@/styles/styles';
 import { getLocale } from '@/util/locale';
+import { MessageBubbleType} from '@/util/types';
 
 const getRandomMessage = () => {
   const messages = [
@@ -28,7 +29,7 @@ const getRandomTimestamp = () => {
   return new Date(randomTime).toISOString();
 };
 
-function generateRandomMessages(numMessages) {
+const generateRandomMessages = (numMessages: number) => {
   const messageArray = [];
 
   for (let i = 0; i < numMessages; i++) {
@@ -39,7 +40,7 @@ function generateRandomMessages(numMessages) {
     });
   }
 
-  messageArray.sort((a, b) => a.timestamp - b.timestamp);
+  messageArray.sort((a, b) => Number(a.timestamp) - Number(b.timestamp));
   return messageArray;
 }
 
@@ -63,7 +64,7 @@ const ThreadScreen = () => {
     setLocale(loc);
   }, []);
 
-  const MessageBubble = ({ message, fromUser }) => {
+  const MessageBubble: React.FC<MessageBubbleType> = ({ message, fromUser }) => {
     return (
       <View style={[styles.messageContainer, fromUser ? styles.userMessage : styles.receivedMessage]}>
         <Text style={styles.messageText}>{message.message}</Text>

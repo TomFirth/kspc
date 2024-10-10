@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { saveContact } from '@/db/contacts';
 import { styles } from '@/styles/styles';
-import { getTimestamp } from '@/util/utilities';
 import { generateKeyPair } from '@/util/encrypt';
 
 // QR code for users to share the app's download page
@@ -33,12 +32,12 @@ const ShareScreen = () => {
   }
 
   const handlePress = () => {
-    const { uuid, username } = generateRandomName();
+    const { fullName, uuid } = generateRandomName();
     const key = generateKeyPair(uuid);
-    saveContact(uuid, username, key, true, getTimestamp());
+    saveContact(uuid, fullName, key.toString());
     router.push({
       pathname: "/contacts/edit",
-      params: { selectedUUID: uuid, selectedUsername: username }
+      params: { selectedUUID: uuid, selectedUsername: fullName }
     });
   };
 

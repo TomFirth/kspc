@@ -11,10 +11,10 @@ const ShareScreen = () => {
   const [contactUsername, setContactUsername] = useState('');
 
   useEffect(() => {
-    updateHeaderTitle(selectedUsername);
+    updateHeaderTitle(selectedUsername as string);
   }, []);
 
-  const updateHeaderTitle = (username) => {
+  const updateHeaderTitle = (username: string) => {
     navigation.setOptions({
       title: `Edit: ${username}`,
     });
@@ -26,8 +26,8 @@ const ShareScreen = () => {
 
   const handleSave = async () => {
     updateHeaderTitle(contactUsername);
-    await updateContact(selectedUUID, contactUsername);
-    console.warning('Contact Updated');
+    updateContact(selectedUUID as string, contactUsername as string);
+    console.warn('Contact Updated');
   };
 
   return (
@@ -38,7 +38,7 @@ const ShareScreen = () => {
         placeholder="Username"
         placeholderTextColor="white"
         autoFocus={true}
-        value={selectedUsername}
+        value={selectedUsername as string}
         onChangeText={(text) => setContactUsername(text)}
       />
       <TouchableOpacity style={styles.button} onPress={handleSave}>
@@ -46,7 +46,7 @@ const ShareScreen = () => {
       </TouchableOpacity>
 
       <Pressable style={styles.deleteButton} onPress={handleDeleteContact}>
-        <Text style={styles.ButtonText}>Delete Contact</Text>
+        <Text style={styles.buttonText}>Delete Contact</Text>
       </Pressable>
     </View>
   )

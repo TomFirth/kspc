@@ -3,13 +3,14 @@ import { Modal, View, Text, Pressable, Image } from "react-native";
 import { useRouter } from "expo-router";
 
 import { createContactsTable, getAllContacts } from '@/db/contacts';
+import { UserType }  from '@/util/types';
 import { styles } from '@/styles/styles';
 
 const ContactsScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedUUID, setSelectedUUID] = useState<string | null>(null);
   const [selectedUsername, setSelectedUsername] = useState<string | null>(null);
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState<UserType[]>([]);
   const router = useRouter();
 
   useEffect(() => {
