@@ -1,11 +1,25 @@
 # Key Signing Party Chat
 
-## What
+## Overview
 
 Kspc is a mobile app with p2p encryption.
 Add people to your contacts and share your public rsa key via nfc. Your contacts are encrypted with your public rsa key. All of this is encrypted by a pin and locked to your device.
 
-## How to run for development   
+## Table of Contents
+
+- [How to Run](#how-to-run)
+  - [Android](#android)
+  - [iOS](#ios)
+- [Development](#development)
+- [Design](#design)
+  - [Pin](#pin)
+  - [Public Key](#public-key)
+  - [Shared Public Key](#shared-public-key)
+  - [Message Format](#message-format)
+  - [Share Format](#share-format)
+- [Todo](#todo)
+
+## How to run   
 
 ### Android
 
