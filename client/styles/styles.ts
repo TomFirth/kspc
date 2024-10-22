@@ -9,6 +9,8 @@ const black = '#000000';
 const darkGreen = '#25D366';
 const lightGreen = '#B4D5C0';
 
+const red = '#FF0000';
+
 const warningColour = '#FF0000';
 
 export const styles = StyleSheet.create({
@@ -111,6 +113,15 @@ export const styles = StyleSheet.create({
     width: '100%',
     padding: 15,
     backgroundColor: darkGreen,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
+  },
+  modalButtonRed: {
+    width: '100%',
+    padding: 15,
+    backgroundColor: red,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',

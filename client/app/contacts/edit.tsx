@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { Text, TextInput, View, Pressable, TouchableOpacity } from "react-native";
-import { useLocalSearchParams, useNavigation } from "expo-router";
+import { Image, Text, TextInput, View, Pressable, TouchableOpacity } from "react-native";
+import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 
 import { updateContact } from '@/db/contacts';
 import { styles } from '@/styles/styles';
 
 const ShareScreen = () => {
   const navigation = useNavigation();
+  const router = useRouter();
+
   const { selectedUUID, selectedUsername } = useLocalSearchParams();
   const [contactUsername, setContactUsername] = useState('');
+  const [tempUsername, setTempUsername] = useState('');
 
   useEffect(() => {
     updateHeaderTitle(selectedUsername as string);
@@ -30,6 +33,12 @@ const ShareScreen = () => {
     console.warn('Contact Updated');
   };
 
+const contacts = () => {
+  router.push({
+    pathname: "/contacts"
+  });
+};
+
   return (
     <View style={styles.main}>
       <Text style={styles.text}>Editing UUID: { selectedUUID }</Text>
@@ -39,7 +48,7 @@ const ShareScreen = () => {
         placeholderTextColor="white"
         autoFocus={true}
         value={selectedUsername as string}
-        onChangeText={(text) => setContactUsername(text)}
+        onChangeText={(text) => setTempUsername(text)}
       />
       <TouchableOpacity style={styles.button} onPress={handleSave}>
         <Text style={styles.buttonText}>Update</Text>
@@ -47,6 +56,13 @@ const ShareScreen = () => {
 
       <Pressable style={styles.deleteButton} onPress={handleDeleteContact}>
         <Text style={styles.buttonText}>Delete Contact</Text>
+      </Pressable>
+
+      <Pressable style={styles.floatingButton} onPress={contacts}>
+        <Image
+          source={require('@/assets/contacts/user.png')}
+          style={styles.floatingButtonImage}
+        />
       </Pressable>
     </View>
   )

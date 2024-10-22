@@ -34,10 +34,14 @@ export const getAllContacts = async (): Promise<UserType[]> => {
   const allRows = await db.getAllAsync(`SELECT * FROM ${tableName} ORDER BY username ASC`) as UserType[];
   let contacts: UserType[] = [];
   for (const row of allRows) {
-    console.log('getAllContacts', row);
-    contacts.push({ uuid: row.uuid, username: row.username });
+    contacts.push({ uuid: row.uuid, username: row.username, read: row.read });
   }
   return contacts;
+};
+
+export const deleteContact = async (uuid: string) => {
+  const db = await SQLite.openDatabaseAsync(dbName, { useNewConnection: true });
+  await db.runAsync(`DELETE FROM ${tableName} WHERE uuid = ?`, [uuid]);
 };
 
 export const deleteDB = async () => {
